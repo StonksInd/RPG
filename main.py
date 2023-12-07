@@ -21,7 +21,7 @@ print(francois.weapon.dammage)
     bonjour
     kikou
 ;,j
-
+aert
     
     
     zroutyiugytirfeh
