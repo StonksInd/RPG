@@ -13,8 +13,13 @@ no_armor = Armor("No Armor", 0, 0, 0)
 armor_warmog = Armor("Warmog", 100, 0, 0)
 armor_thornmail = Armor("Thornmail", 60, 25, 0)
  
-
-
+def affichage():
+    while True:
+        input_user = str(input("veuillez entrer votre action : "))
+        if input_user.lower() == "quitter":
+            print("vous quitez le jeu")
+            break
+affichage()
 francois = Mage("jean", no_armor, no_weapon, 100)
 print(francois.weapon.dammage) 
       
