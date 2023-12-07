@@ -1,8 +1,8 @@
-from character import Character
-from barbarian import Barbarian
-from mage import Mage
-from armor import Armor
-from weapon import Weapons
+from characters.character import Character
+from characters.barbarian import Barbarian
+from characters.mage import Mage
+from gears.armor import Armor
+from gears.weapon import Weapons
 
 no_weapon = Weapons("No Weapon", 0, 0, 0, 0)
 weapon_hivemind = Weapons("Hivemind", 25, 0, 0, 0)

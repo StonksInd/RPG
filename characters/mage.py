@@ -1,6 +1,6 @@
-from character import Character
-from armor import Armor
-from weapon import Weapons
+from characters.character import Character
+from gears.armor import Armor
+from gears.weapon import Weapons
 
 class Mage(Character):
     
