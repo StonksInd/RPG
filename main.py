@@ -18,6 +18,6 @@ armor_thornmail = Armor("Thornmail", 60, 25, 0)
 francois = Mage("jean", no_armor, no_weapon, 100)
 print(francois.weapon.dammage) 
       
-    
+    bonjour
     
     
