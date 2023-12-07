@@ -22,3 +22,4 @@ print(francois.weapon.dammage)
     
     
     zroutyiugytirfeh
+    azerty
