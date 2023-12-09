@@ -16,6 +16,12 @@ class Character:
         self.hp_basic = hp_basic
         self.armor = armor
         self.weapon = weapon
+        
+    def prendre_degats(self, degats):
+        self.hp_basic -= degats
+        if self.hp_basic <= 0:
+            self.hp_basic = 0
+            print(f"{self.name_perso} a été vaincu!")
 
         
         

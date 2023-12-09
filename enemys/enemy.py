@@ -1,6 +1,7 @@
 from gears.weapon import Weapons
 from gears.armor import Armor
-class Enemy:
+from characters.character import Character
+class Enemy(Character):
     
     def __init__(self,
                  name_perso : str,

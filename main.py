@@ -21,19 +21,32 @@ def choose_all():
         choose_armor = input('Choisissez l/armure entre ')
         choose_name = str(input('Choisissez votre nom :'))
         
-
-def affichage():
-    while True:
-        input_user = str(input("veuillez entrer votre action : "))
-        if input_user.lower() == "quitter":
-            print("vous quitez le jeu")
-            break
-affichage()
+        
+        
+        
+Michel = Enemy("Slip", 100, no_armor, weapon_hivemind)
+francois = Mage("jean", no_armor, weapon_hivemind, 100)
 
 
-francois = Mage("jean", no_armor, no_weapon, 100)
-print(francois.weapon.dammage) 
+while True:
+    input_user = str(input("veuillez entrer votre action : "))
+    if input_user.lower() == "quitter":
+        print("vous quitez le jeu")
+        break
+    if input_user.lower() == "attaquer":
+        Michel.prendre_degats(francois.weapon.dammage)
+        print(f"vous attaquer l'enemy de {francois.weapon.dammage} ")
+        print(Michel.hp_basic)
+
+
+
+
+# print(francois.weapon.dammage) 
       
 
-Michel = Enemy("Slip", no_armor, no_weapon, 100)
-print(Michel.weapon.dammage) 
+
+# print(Michel.weapon.dammage) 
+
+# Michel.weapon.degats(francois)
+# print(Michel.weapon.degats(francois))
+# print(francois.hp_basic)

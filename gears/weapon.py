@@ -12,4 +12,6 @@ class Weapons:
         self.mana = mana
         self.magic_dammage = magic_dammage
         self.armor_weapon = armor_weapon
+        
+
 
