@@ -24,7 +24,7 @@ def choose_all():
         
         
         
-Michel = Enemy("Slip", 100, no_armor, weapon_hivemind)
+Michel = Enemy("Slip", 100, armor_warmog, weapon_hivemind)
 francois = Mage("jean", no_armor, weapon_hivemind, 100)
 
 
@@ -34,7 +34,7 @@ while True:
         print("vous quitez le jeu")
         break
     if input_user.lower() == "attaquer":
-        Michel.prendre_degats(francois.weapon.dammage)
+        Michel.dammage_reduction(francois.weapon.dammage)
         print(f"vous attaquer l'enemy de {francois.weapon.dammage} ")
         print(Michel.hp_basic)
  
