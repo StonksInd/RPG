@@ -50,13 +50,7 @@ while True:
         print(Michel.hp_basic)
 
  
-
-
-
 print(User_1.weapon.dammage) 
-
-      
-
 
 
 
@@ -65,7 +59,6 @@ print(User_1.weapon.dammage)
 # print(francois.hp_basic)
 
 #todo mettre en place les combats avec une interface qui marche 
-#todo faire un menu qui demande à creer un personnage 
 #! puis mettre en places les différentes attaques pour le mage et le nb d'attaque 
 #! et les dégats critiques
 #! les thorns des armures
