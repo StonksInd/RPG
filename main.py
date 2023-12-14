@@ -27,16 +27,23 @@ def choose_all():
 Michel = Enemy("Slip", 100, armor_warmog, weapon_hivemind)
 francois = Mage("jean", no_armor, weapon_hivemind, 100)
 
-
-while True:
-    input_user = str(input("veuillez entrer votre action : "))
-    if input_user.lower() == "quitter":
-        print("vous quitez le jeu")
-        break
-    if input_user.lower() == "attaquer":
-        Michel.dammage_reduction(francois.weapon.dammage)
-        print(f"vous attaquer l'enemy de {francois.weapon.dammage} ")
-        print(Michel.hp_basic)
+def choose_attack(self) -> int:
+    while True:
+        input_user = str(input("veuillez entrer votre action : "))
+        if input_user.lower() == "quitter":
+            canAttack = False
+            print("vous quitez le jeu")
+            break
+        if input_user.lower() == "attaquer":
+            for x in self.get_mana():
+                    if self.mana >= x.cost():
+                        canAttack = True
+            Michel.dammage_reduction(francois.weapon.dammage)
+            print(f"vous attaquer l'enemy de {francois.weapon.dammage} ")
+        if canAttack:
+            return Michel.hp_basic
+        else : 
+            print("Vous n'avez pas assez de mana")
  
 
 
@@ -50,3 +57,4 @@ while True:
 # Michel.weapon.degats(francois)
 # print(Michel.weapon.degats(francois))
 # print(francois.hp_basic)
+Michel.armor.thorns

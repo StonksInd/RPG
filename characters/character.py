@@ -1,5 +1,6 @@
 from gears.weapon import Weapons
 from gears.armor import Armor
+from characters.mage import Mage
 
 class Character:
     
@@ -33,17 +34,25 @@ class Character:
         self.hp_basic = int(self.hp_basic)
         return self.hp_basic
         
-    def get_magic_resistance(self) -> int:
-        return (self.magic_resistance + self.Armor.get_magic_resistance())
-        
     def magic_dammage_reduction(self, magic_dammage) -> int:
-        magic_resistance = self.get_magic_resistance()
-        return ((self.hp_basic)-((1-(magic_resistance/500)) * magic_dammage))
-
+        magic_resistance = self.armor.magic_resistance
+        self.hp_basic -= ((1-(magic_resistance/500)) * magic_dammage)
+        self.hp_basic = int(self.hp_basic)
+        return self.hp_basic
         
-        
-
+    def damage_returned(self, dammage) -> int:
+        thorns = self.armor.thorns
+        self.hp_basic -= ((1-(thorns/500)) * dammage)
+        self.hp_basic = int(self.hp_basic)
+        return self.hp_basic
     
-        
-      
-        
+    def get_mana(self) -> int:
+        return (User_1.weapon.mana + self.mage.mana_basic)
+
+    def choose_attack(self) -> float:
+        choice = None
+        while True:
+            choice = str(input("Quelle attaque voulez-vous utiliser ?"))
+            for x in self.get_mana():
+                if self.mana >= x.cost:
+                    canAttack = True

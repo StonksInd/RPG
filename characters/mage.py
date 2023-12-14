@@ -24,6 +24,9 @@ class Mage(Character):
         self.mana_basic = mana_basic
         self.hp_basic = hp_basic
         
+
+        def get_mana(self) -> int:
+            return (User_1.weapon.mana + self.mana_basic)
  
             
 
