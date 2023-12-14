@@ -9,7 +9,7 @@ class Mage(Character):
                  name_perso : str,
                  armor: Armor,
                  weapon : Weapons,
-                 hp_basic : int,
+                 hp_basic : int = 100,
                  name_classe : str = "mage",
                  mana_basic : int = 200,
                  nb_attack : int = 1,
@@ -28,6 +28,6 @@ class Mage(Character):
         def get_mana(self) -> int:
             return (User_1.weapon.mana + self.mana_basic)
  
-            
 
+    
     

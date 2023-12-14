@@ -35,10 +35,11 @@ class Character:
         return self.hp_basic
         
     def magic_dammage_reduction(self, magic_dammage) -> int:
-        magic_resistance = self.armor.magic_resistance
-        self.hp_basic -= ((1-(magic_resistance/500)) * magic_dammage)
-        self.hp_basic = int(self.hp_basic)
-        return self.hp_basic
+        magic_resistance = self.get_magic_resistance()
+        return ((self.hp_basic)-((1-(magic_resistance/500)) * magic_dammage))
+    
+
+
         
     def damage_returned(self, dammage) -> int:
         thorns = self.armor.thorns
