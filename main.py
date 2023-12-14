@@ -38,9 +38,17 @@ while True:
         print("vous quitez le jeu")
         break
     if input_user.lower() == "attaquer":
+        if classe_choisie == 0:
+            if Michel.get_mana() <= attack: 
+                print("Vous n'avez pas assez de mana pour attaquer")
+            else : 
+                Michel.magic_dammage_reduction(francois.weapon.magic_damage)
+                print(f"Vous avez infligé à l'ennemi {francois.weapon.magic_damage}")
+            
         Michel.dammage_reduction(francois.weapon.dammage)
         print(f"vous attaquer l'enemy de {francois.weapon.dammage} ")
         print(Michel.hp_basic)
+
  
 
 
