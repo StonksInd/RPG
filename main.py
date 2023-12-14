@@ -14,21 +14,25 @@ no_armor = Armor("No Armor", 0, 0, 0)
 armor_warmog = Armor("Warmog", 100, 0, 0)
 armor_thornmail = Armor("Thornmail", 60, 25, 0)
  
-def choose_all():
-    choose_character = input("Choisissez votre classe entre Barbarian, Mage")
-    if choose_character == "Barbarian":
-        choose_weapon = input('Choisissez votre arme entre')
-        choose_armor = input('Choisissez l/armure entre ')
-        choose_name = str(input('Choisissez votre nom :'))
-        
-        
         
         
 Michel = Enemy("Slip", 100, armor_warmog, weapon_hivemind)
 francois = Mage("jean", no_armor, weapon_hivemind, 100)
 
 
+classe = [Mage, Barbarian]
+armor = [no_armor, armor_warmog, armor_thornmail]
+weapon = [no_weapon, weapon_hivemind, weapon_songsteel, weapon_riftmaker]
+
+name_user = input("quel est votre nom ? : ")
+classe_choisie = int(input("veuillez entrer votre classe, 0: Mage, 1: Barbarian "))
+armor_choisie = int(input("quelle armure voulez vous 0:no_armor, 1:armor_warmog 2:armor_thornmail "))
+weapon_choisie = int(input("quelle arme voulez vous 0:no_weapon, 1:weapon_hivemind 2:weapon_songsteel 3:weapon_riftmaker "))
+
+User_1 = classe[classe_choisie](name_user, armor[armor_choisie], weapon[weapon_choisie])
+
 while True:
+
     input_user = str(input("veuillez entrer votre action : "))
     if input_user.lower() == "quitter":
         print("vous quitez le jeu")
@@ -41,12 +45,23 @@ while True:
 
 
 
-# print(francois.weapon.dammage) 
+print(User_1.weapon.dammage) 
+
       
 
 
-# print(Michel.weapon.dammage) 
+
 
 # Michel.weapon.degats(francois)
 # print(Michel.weapon.degats(francois))
 # print(francois.hp_basic)
+
+#todo mettre en place les combats avec une interface qui marche 
+#todo faire un menu qui demande à creer un personnage 
+#! puis mettre en places les différentes attaques pour le mage et le nb d'attaque 
+#! et les dégats critiques
+#! les thorns des armures
+
+
+
+
