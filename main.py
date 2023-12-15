@@ -71,6 +71,8 @@ print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.w
 # print(francois.hp_basic)
 
 #todo mettre en place les combats avec une interface qui marche 
+#todo mettre en place d'ifférent niveau de difficulté
+#todo faire de l'aléatoire avec random qui permet de 0-5/100 de faire un critique et de 95-100/100 de louper l'attaque
 #! puis mettre en places les différentes attaques pour le mage et le nb d'attaque 
 #! et les dégats critiques
 #! les thorns des armures
