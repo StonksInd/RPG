@@ -1,6 +1,6 @@
 from gears.weapon import Weapons
 from gears.armor import Armor
-from characters.mage import Mage
+
 
 class Character:
     
@@ -9,6 +9,7 @@ class Character:
                  hp_basic : int,
                  armor : Armor,
                  weapon : Weapons,
+                 
                  
                  ):
         
