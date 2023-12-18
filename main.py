@@ -20,26 +20,26 @@ Michel = Enemy("Slip", 100, armor_warmog, weapon_hivemind)
 francois = Mage("jean", no_armor, weapon_hivemind, 100)
 
 
-classe = [Mage, Barbarian]
-armor = [no_armor, armor_warmog, armor_thornmail]
-weapon = [no_weapon, weapon_hivemind, weapon_songsteel, weapon_riftmaker]
+# classe = [Mage, Barbarian]
+# armor = [no_armor, armor_warmog, armor_thornmail]
+# weapon = [no_weapon, weapon_hivemind, weapon_songsteel, weapon_riftmaker]
 
-classe_choisie, armor_choisie, weapon_choisie = len(classe), len(armor), len(weapon)
+# classe_choisie, armor_choisie, weapon_choisie = len(classe), len(armor), len(weapon)
 
-name_user = str(input("quel est votre nom ? : "))
-while classe_choisie < 0 or classe_choisie > len(classe)-1:
-    classe_choisie = int(input("veuillez entrer votre classe, 0: Mage, 1: Barbarian "))
-while armor_choisie <0 or armor_choisie > len(armor)-1:
-    armor_choisie = int(input("quelle armure voulez vous 0:no_armor, 1:armor_warmog 2:armor_thornmail "))
-while weapon_choisie < 0 or weapon_choisie > len(weapon)-1:
-    weapon_choisie = int(input("quelle arme voulez vous 0:no_weapon, 1:weapon_hivemind 2:weapon_songsteel 3:weapon_riftmaker "))
+# name_user = str(input("quel est votre nom ? : "))
+# while classe_choisie < 0 or classe_choisie > len(classe)-1:
+#     classe_choisie = int(input("veuillez entrer votre classe, 0: Mage, 1: Barbarian "))
+# while armor_choisie <0 or armor_choisie > len(armor)-1:
+#     armor_choisie = int(input("quelle armure voulez vous 0:no_armor, 1:armor_warmog 2:armor_thornmail "))
+# while weapon_choisie < 0 or weapon_choisie > len(weapon)-1:
+#     weapon_choisie = int(input("quelle arme voulez vous 0:no_weapon, 1:weapon_hivemind 2:weapon_songsteel 3:weapon_riftmaker "))
 
-User_1 = classe[classe_choisie](name_user, armor[armor_choisie], weapon[weapon_choisie])
-print("--------------------------------------")
-print(f"Vous avez choisi {User_1.name_perso} comme nom. ")
-print(f"Vous avez choisi {User_1.name_classe} comme classe, elle à {User_1.hp_basic} point de vie")
-print(f"Vous avez choisi l'armure {User_1.armor.name_armor}, elle a {User_1.armor.armor} d'armure, {User_1.armor.magic_resistance} d'armure magique et {User_1.armor.thorns} de thorns. ")
-print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.weapon.dammage} dégats, {User_1.weapon.magic_damage} dégat magique, donne {User_1.weapon.mana} mana et donne {User_1.weapon.armor_weapon} points d'armures.")
+# User_1 = classe[classe_choisie](name_user, armor[armor_choisie], weapon[weapon_choisie])
+# print("--------------------------------------")
+# print(f"Vous avez choisi {User_1.name_perso} comme nom. ")
+# print(f"Vous avez choisi {User_1.name_classe} comme classe, elle à {User_1.hp_basic} point de vie")
+# print(f"Vous avez choisi l'armure {User_1.armor.name_armor}, elle a {User_1.armor.armor} d'armure, {User_1.armor.magic_resistance} d'armure magique et {User_1.armor.thorns} de thorns. ")
+# print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.weapon.dammage} dégats, {User_1.weapon.magic_damage} dégat magique, donne {User_1.weapon.mana} mana et donne {User_1.weapon.armor_weapon} points d'armures.")
 
 
 
@@ -64,7 +64,7 @@ print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.w
 
 # print(Mage.name_classe) 
 
-
+print(Michel.dammage_reduction(francois.weapon.dammage))
 
 # Michel.weapon.degats(francois)
 # print(Michel.weapon.degats(francois))
@@ -72,7 +72,7 @@ print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.w
 
 #todo mettre en place les combats avec une interface qui marche 
 #todo mettre en place d'ifférent niveau de difficulté
-#todo faire de l'aléatoire avec random qui permet de 0-5/100 de faire un critique et de 95-100/100 de louper l'attaque
+#todo faire des armes avec plus de crit mais moins de degats et inversemment 
 #! puis mettre en places les différentes attaques pour le mage et le nb d'attaque 
 #! et les dégats critiques
 #! les thorns des armures

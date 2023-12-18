@@ -1,6 +1,6 @@
 from gears.weapon import Weapons
 from gears.armor import Armor
-
+from random import randint
 
 class Character:
     
@@ -31,7 +31,14 @@ class Character:
         
     def dammage_reduction(self, dammage) -> int:
         armor = self.armor.armor
-        self.hp_basic -= ((1-(armor/500)) * dammage)
+        crit_esquive = randint(0,101)
+        if crit_esquive <= 5:
+            self.hp_basic -= ((1-(armor/500)) * (dammage *1.2))
+        if crit_esquive >=95:
+            print(f"{self.name_perso} esquive l'attaque énemie")
+            return self.hp_basic 
+        else:
+            self.hp_basic -= ((1-(armor/500)) * dammage)
         self.hp_basic = int(self.hp_basic)
         return self.hp_basic
         
