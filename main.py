@@ -12,23 +12,24 @@ weapon_riftmaker = Weapons("Riftmaker", 0, 25, 100, 0)
 
 no_armor = Armor("No Armor", 0, 0, 0)
 armor_warmog = Armor("Warmog", 100, 0, 0)
-armor_thornmail = Armor("Thornmail", 60, 25, 0)
+armor_thornmail = Armor("Thornmail", 60, 10, 0)
+
  
         
         
-Michel = Enemy("Slip", 100, armor_warmog, weapon_hivemind)
-francois = Mage("jean", no_armor, weapon_hivemind, 100)
+Michel = Enemy("Slip", 100, armor_thornmail, weapon_hivemind)
+Francois = Mage("jean", armor_thornmail, weapon_hivemind,)
 
 
-# classe = [Mage, Barbarian]
-# armor = [no_armor, armor_warmog, armor_thornmail]
-# weapon = [no_weapon, weapon_hivemind, weapon_songsteel, weapon_riftmaker]
+classe = [Mage, Barbarian]
+armor = [no_armor, armor_warmog, armor_thornmail]
+weapon = [no_weapon, weapon_hivemind, weapon_songsteel, weapon_riftmaker]
 
-# classe_choisie, armor_choisie, weapon_choisie = len(classe), len(armor), len(weapon)
+classe_choisie, armor_choisie, weapon_choisie = len(classe), len(armor), len(weapon)
 
 # name_user = str(input("quel est votre nom ? : "))
-# while classe_choisie < 0 or classe_choisie > len(classe)-1:
-#     classe_choisie = int(input("veuillez entrer votre classe, 0: Mage, 1: Barbarian "))
+while classe_choisie < 0 or classe_choisie > len(classe)-1:
+    classe_choisie = int(input("veuillez entrer votre classe, 0: Mage, 1: Barbarian "))
 # while armor_choisie <0 or armor_choisie > len(armor)-1:
 #     armor_choisie = int(input("quelle armure voulez vous 0:no_armor, 1:armor_warmog 2:armor_thornmail "))
 # while weapon_choisie < 0 or weapon_choisie > len(weapon)-1:
@@ -43,39 +44,44 @@ francois = Mage("jean", no_armor, weapon_hivemind, 100)
 
 
 
-# while True:
+while True:
 
-#     input_user = str(input("veuillez entrer votre action : "))
-#     if input_user.lower() == "quitter":
-#         print("vous quitez le jeu")
-#         break
-#     if input_user.lower() == "attaquer":
-#         if classe_choisie == 0:
-#             if Michel.get_mana() <= attack: 
-#                 print("Vous n'avez pas assez de mana pour attaquer")
-#             else : 
-#                 Michel.magic_dammage_reduction(francois.weapon.magic_damage)
-#                 print(f"Vous avez infligé à l'ennemi {francois.weapon.magic_damage}")
+    input_user = str(input("veuillez entrer votre action : "))
+    if input_user.lower() == "quitter":
+        print("vous quitez le jeu")
+        break
+    if input_user.lower() == "attaquer":
+        if classe_choisie == 0:
+            if Michel.get_mana() <= attack: 
+                print("Vous n'avez pas assez de mana pour attaquer")
+            else : 
+                Michel.magic_dammage_reduction(Francois.weapon.magic_damage)
+               
+        if classe_choisie ==  1:
+            Michel.dammage_reduction(Francois.weapon.dammage, Francois)
             
-#         Michel.dammage_reduction(francois.weapon.dammage)
-#         print(f"vous attaquer l'enemy de {francois.weapon.dammage} ")
-#         print(Michel.hp_basic)
+                
+        
+        print(f"François {Francois.hp_basic}")
+        print(f"Michel {Michel.hp_basic}")
+    
+        
 
 
 # print(Mage.name_classe) 
 
-print(Michel.dammage_reduction(francois.weapon.dammage))
+print(Michel.dammage_reduction(Francois.weapon.dammage))
 
-# Michel.weapon.degats(francois)
-# print(Michel.weapon.degats(francois))
-# print(francois.hp_basic)
+# Michel.weapon.degats(Francois)
+# print(Michel.weapon.degats(Francois))
+# print(Francois.hp_basic)
 
 #todo mettre en place les combats avec une interface qui marche 
 #todo mettre en place d'ifférent niveau de difficulté
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
 #! puis mettre en places les différentes attaques pour le mage et le nb d'attaque 
-#! et les dégats critiques
-#! les thorns des armures
+#! et les dégats critiques pour les attaques magiques (reproduire la meme chose que pour les degats physique)
+#! protection magique
 
 
 
