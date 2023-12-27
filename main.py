@@ -8,7 +8,7 @@ from enemys.enemy import Enemy
 no_weapon = Weapons("No Weapon", 0, 0, 0, 0)
 weapon_hivemind = Weapons("Hivemind", 25, 0, 0, 0)
 weapon_songsteel = Weapons("Songsteel", 20, 0, 0, 15)
-weapon_riftmaker = Weapons("Riftmaker", 0, 25, 100, 0)
+weapon_riftmaker = Weapons("Riftmaker", 0, 10, 100, 0)
 
 no_armor = Armor("No Armor", 0, 0, 0)
 armor_warmog = Armor("Warmog", 100, 0, 0)
@@ -18,7 +18,7 @@ armor_thornmail = Armor("Thornmail", 60, 10, 0)
         
         
 Michel = Enemy("Slip", 100, armor_thornmail, weapon_hivemind)
-Francois = Mage("jean", armor_thornmail, weapon_hivemind,)
+Francois = Mage("jean", armor_thornmail, weapon_riftmaker)
 
 
 classe = [Mage, Barbarian]
@@ -52,11 +52,14 @@ while True:
         break
     if input_user.lower() == "attaquer":
         if classe_choisie == 0:
-            if Michel.get_mana() <= attack: 
+            niveau_de_sort = int(input("vous voulez lancer un sort de niveau combien ?: "))
+            if Francois.get_mana() <= 0 or Francois.get_mana()-(niveau_de_sort * 20)<0: 
                 print("Vous n'avez pas assez de mana pour attaquer")
+                
+                
             else : 
-                Michel.magic_dammage_reduction(Francois.weapon.magic_damage)
-               
+                Michel.magic_dammage_reduction(Francois.weapon.magic_damage, niveau_de_sort, Francois)
+                print(Francois.get_mana())
         if classe_choisie ==  1:
             Michel.dammage_reduction(Francois.weapon.dammage, Francois)
             
@@ -77,10 +80,9 @@ print(Michel.dammage_reduction(Francois.weapon.dammage))
 # print(Francois.hp_basic)
 
 #todo mettre en place les combats avec une interface qui marche 
-#todo mettre en place d'ifférent niveau de difficulté
+#todo mettre en place différent niveau de difficulté
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
-#! puis mettre en places les différentes attaques pour le mage et le nb d'attaque 
-#! et les dégats critiques pour les attaques magiques (reproduire la meme chose que pour les degats physique)
+#! regler la puissance des attaque des sorcier car trop pt et mettre un lvl de sort max
 #! protection magique
 
 
