@@ -9,6 +9,7 @@ class Enemy(Character):
                  hp_basic : int,
                  armor : Armor,
                  weapon : Weapons,
+                 mana_basic : int = 0
                  
                  ):
         
@@ -17,3 +18,4 @@ class Enemy(Character):
         self.hp_basic = hp_basic
         self.armor = armor
         self.weapon = weapon
+        self.mana_basic = mana_basic
