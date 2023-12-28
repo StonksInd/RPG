@@ -137,9 +137,15 @@ while True:
 
 
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
-#! regler la puissance des attaque des sorcier 
-#! instancier les 2 attaques pour le barbare
+#! regler la puissance des attaque des sorcier  et ajouter des sort 
+#! instancier les 2 attaques pour le barbare et tout basiquement
+#! faire les attaques en mode machin attaque machin avec telle arme
 
 
+#! Créer une classe Spell avec les attributs name, damage et mana.
+#! La méthode "attack" sera également surchargée afin de donner le choix au magicien entre lancer un sort ou attaquer avec son arme.
+#! Classe arena 
 
-
+#? Bonus
+#?Carte et salle 
+#? pouvoir utiliser 2 personnage en mode campagne (en multi quoi)
