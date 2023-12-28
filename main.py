@@ -31,67 +31,97 @@ armure_archmage = Armor("armure magique", 0, 0, 150)
     
        
 #instance des enemies physique
-Gobelin = Enemy("Gobelin", 50, armure_legere, weapon_hivemind)
-Hobogoblin = Enemy("Hobogoblin", 150, armure_moyenne, weapon_hivemind)
-Orc = Enemy("Orc", 250, armure_lourde, weapon_hivemind)
-Ogre = Enemy("Ogre", 350, pas_armure, weapon_hivemind)
+Gobelin = Enemy("Gobelin", 50, armure_legere, Massue)
+Hobogoblin = Enemy("Hobogoblin", 150, armure_moyenne, Lance)
+Orc = Enemy("Orc", 250, armure_lourde, Hache)
+Ogre = Enemy("Ogre", 350, pas_armure, Massue)
 
 #instance des enemies magique
-Salamendre_elementaire = Enemy("Salamendre de feu", 100, armor_thornmail, weapon_hivemind)
-Sorciere = Enemy("Sorciere", 100, armor_thornmail, weapon_hivemind)
-Golem_magique = Enemy("Golem magique", 100, armor_thornmail, weapon_hivemind)
-Elentaire = Enemy("Esprit élémentaire", 100, armor_thornmail, weapon_hivemind)
+Salamendre_elementaire = Enemy("Salamendre de feu", 100, armure_full_parade, La_main)
+Sorciere = Enemy("Sorciere", 150, armure_archmage, Baguette)
+Golem_magique = Enemy("Golem magique", 450, armure_lourde, La_main)
+Elentaire = Enemy("Esprit élémentaire", 200, armure_archmage, Sceptre)
 
 
 classe = [Mage, Barbarian]
 armor = [pas_armure, armure_legere, armure_moyenne, armure_lourde, armure_magique, armure_full_parade, armure_archmage]
 weapon = [La_main, Massue, Lance, Hache, Baton, Baguette, Sceptre]
-enemy = [Gobelin, Hobogoblin, Orc, Ogre, Salamendre_elementaire, Sorciere, Golem_magique, Elentaire]
-classe_choisie, armor_choisie, weapon_choisie = len(classe), len(armor), len(weapon)
+enemie_physique= [Gobelin, Hobogoblin, Orc, Ogre]
+enemie_magique =[Salamendre_elementaire, Sorciere, Golem_magique, Elentaire]
+classe_choisie, armor_choisie, weapon_choisie, difficulte_choisie = len(classe), len(armor), len(weapon), len(enemie_physique)
 
-Michel = Enemy("Enemy", 100, armure_moyenne, weapon_hivemind)
-Francois = Mage("jean", armure_moyenne, weapon_riftmaker)
+# Michel = Enemy("Enemy", 100, armure_moyenne, Baton)
+# Francois = Mage("jean", armure_moyenne, Baton)
 
-# name_user = str(input("quel est votre nom ? : "))
+name_user = str(input("quel est votre nom ? : "))
 while classe_choisie < 0 or classe_choisie > len(classe)-1:
     classe_choisie = int(input("veuillez entrer votre classe, 0: Mage, 1: Barbarian "))
-# while armor_choisie <0 or armor_choisie > len(armor)-1:
-#     armor_choisie = int(input("quelle armure voulez vous 0:pas_armure, 1:armure_lourde 2:armor_thornmail "))
-# while weapon_choisie < 0 or weapon_choisie > len(weapon)-1:
-#     weapon_choisie = int(input("quelle arme voulez vous 0:no_weapon, 1:weapon_hivemind 2:weapon_songsteel 3:weapon_riftmaker "))
+while armor_choisie <0 or armor_choisie > len(armor)-1:
+    armor_choisie = int(input("quelle armure voulez vous 0:pas_armure, 1:armure_legere, 2:armure_moyenne, 3:armure_lourde, 4:armure_magique, 5:armure_full_parade, 6:armure_archmage "))
+while weapon_choisie < 0 or weapon_choisie > len(weapon)-1:
+    weapon_choisie = int(input("quelle arme voulez vous 0:La_main, 1:Massue, 2:Lance, 3:Hache, 4:Baton, 5:Baguette, 6:Sceptre "))
+while difficulte_choisie < 0 or difficulte_choisie > len(enemie_magique)-1:
+    difficulte_choisie = int(input("quelle difficulté voulez vous ? la 1, 2, 3 ou 4 ")) -1
 
-# User_1 = classe[classe_choisie](name_user, armor[armor_choisie], weapon[weapon_choisie])
-# print("--------------------------------------")
-# print(f"Vous avez choisi {User_1.name_perso} comme nom. ")
-# print(f"Vous avez choisi {User_1.name_classe} comme classe, elle à {User_1.hp_basic} point de vie")
-# print(f"Vous avez choisi l'armure {User_1.armor.name_armor}, elle a {User_1.armor.armor} d'armure, {User_1.armor.magic_resistance} d'armure magique et {User_1.armor.thorns} de thorns. ")
-# print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.weapon.dammage} dégats, {User_1.weapon.magic_damage} dégat magique, donne {User_1.weapon.mana} mana et donne {User_1.weapon.armor_weapon} points d'armures.")
+enemie = [enemie_physique[difficulte_choisie],enemie_magique[difficulte_choisie]]
+User_1 = classe[classe_choisie](name_user, armor[armor_choisie], weapon[weapon_choisie])
 
+print("--------------------------------------")
+print(f"Vous avez choisi {User_1.name_perso} comme nom. ")
+print(f"Vous avez choisi {User_1.name_classe} comme classe, elle à {User_1.hp_basic} point de vie")
+print(f"Vous avez choisi l'armure {User_1.armor.name_armor}, elle a {User_1.armor.armor} d'armure, {User_1.armor.magic_resistance} d'armure magique et {User_1.armor.thorns} de thorns. ")
+print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.weapon.dammage} dégats, {User_1.weapon.magic_damage} dégat magique, donne {User_1.weapon.mana} mana et donne {User_1.weapon.armor_weapon} points d'armures.")
+print("--------------------------------------")
 
-
+enemie_choisie = 0
 while True:
-
-    input_user = str(input("veuillez entrer votre action : "))
-    if input_user.lower() == "quitter":
-        print("vous quitez le jeu")
+    if User_1.hp_basic<=0:
+        print("vous êtes mort dommage")
         break
-    if input_user.lower() == "attaquer":
+    if enemie_choisie >= len(enemie):
+        print("vous avez vaincu tout les enemies")
+        break
+    if enemie[enemie_choisie].hp_basic<=0:
+        print(f"vous avez vaincu un {enemie[enemie_choisie].name_perso}")
+        enemie_choisie+=1
+        
+
+        
+    else:
+        #input_user = str(input("veuillez entrer votre action : "))
+        # if input_user.lower() == "quitter":
+        #     print("vous quitez le jeu")
+        #     break
+        
+        print(f"vous avez {User_1.hp_basic} point de vie")
+        print(f"{enemie[enemie_choisie].name_perso} à {enemie[enemie_choisie].hp_basic} point de vie")
         if classe_choisie == 0:
-            niveau_de_sort = int(input("vous voulez lancer un sort de niveau combien ?: "))
-            if Francois.get_mana() <= 0 or Francois.get_mana()-(niveau_de_sort * 20)<0: 
-                print("Vous n'avez pas assez de mana pour attaquer")
+            input_user = str(input("quel est votre action ? vous reposer ou attaquer ? "))
+            
+            if input_user.lower() == "attaquer":
+                niveau_de_sort = int(input("vous voulez lancer un sort de niveau combien ?: "))
                 
+                if User_1.get_mana() <= 0 or User_1.get_mana()-(niveau_de_sort * 20)<0: 
+                    print("Vous n'avez pas assez de mana pour attaquer")
                 
-            else : 
-                Michel.magic_dammage_reduction(Francois.weapon.magic_damage, niveau_de_sort, Francois)
-                print(Francois.get_mana())
+                else : 
+                    enemie[enemie_choisie].magic_dammage_reduction(User_1.weapon.magic_damage, niveau_de_sort, User_1)
+                    print(User_1.get_mana())
+            
+                    
+            if input_user.lower() == "reposer":
+                print(f"vousrecupérez {User_1.recup_mana()} mana")
+                print(f"vous avez {User_1.get_mana()} mana")
+                
+             
         if classe_choisie ==  1:
-            Michel.dammage_reduction(Francois.weapon.dammage, Francois)
+            enemie[enemie_choisie].dammage_reduction(User_1.weapon.dammage, User_1)
+        
+            
             
                 
         
-        print(f"François {Francois.hp_basic}")
-        print(f"Michel {Michel.hp_basic}")
+
     
         
 
@@ -104,10 +134,10 @@ while True:
 # print(Michel.weapon.degats(Francois))
 # print(Francois.hp_basic)
 
-#todo mettre en place les combats avec une interface qui marche 
-#todo mettre en place différent niveau de difficulté
+
+
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
-#! regler la puissance des attaque des sorcier et mettre un lvl de sort max
+#! regler la puissance des attaque des sorcier 
 #! instancier les 2 attaques pour le barbare
 
 

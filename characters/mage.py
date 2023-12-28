@@ -1,6 +1,7 @@
 from characters.character import Character
 from gears.armor import Armor
 from gears.weapon import Weapons
+from random import randint
 
 class Mage(Character):
     
@@ -11,7 +12,7 @@ class Mage(Character):
                  weapon : Weapons,
                  hp_basic : int = 100,
                  name_classe : str = "mage",
-                 mana_basic : int = 200,
+                 mana_basic : int = 5000,#valeur de test
                  nb_attack : int = 1,
                  ):
         
@@ -31,7 +32,11 @@ class Mage(Character):
     def attaque_magique(self, niveau_de_sort):#permet de différencier les sort lvl 1 et 2 ect... et de conso le mana de l'attack
         cout_mana_spell = 20*niveau_de_sort
         return cout_mana_spell
- 
+    
+    def recup_mana(self):
+        self.mana_basic += randint(10, 50)
+        return self.mana_basic
+        
 
 
     
