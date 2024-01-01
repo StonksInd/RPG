@@ -5,6 +5,7 @@ from gears.armor import Armor
 from gears.weapon import Weapons
 from enemys.enemy import Enemy
 from random import randint
+from gears.spell import Spell
 
 #armes physique
 La_main = Weapons("Ta main", 10, 0, 0, 0)
@@ -42,6 +43,10 @@ Sorciere = Enemy("Sorciere", 150, armure_archmage, Baguette)
 Golem_magique = Enemy("Golem magique", 450, armure_lourde, La_main)
 Elentaire = Enemy("Esprit élémentaire", 200, armure_archmage, Sceptre)
 
+#instance des sorts
+Etincelle = Spell("ettincelle", 10, 15)
+Boule_de_feu = Spell("boule de feu", 20, 30)
+Vague_tonante = Spell("vague tonante", 50, 70)
 
 classe = [Mage, Barbarian]
 armor = [pas_armure, armure_legere, armure_moyenne, armure_lourde, armure_magique, armure_full_parade, armure_archmage]
@@ -73,17 +78,17 @@ print(f"Vous avez choisi l'armure {User_1.armor.name_armor}, elle a {User_1.armo
 print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.weapon.dammage} dégats, {User_1.weapon.magic_damage} dégat magique, donne {User_1.weapon.mana} mana et donne {User_1.weapon.armor_weapon} points d'armures.")
 print("--------------------------------------")
 
-enemie_choisie = 0
+nb_enemie = 0
 while True:
     if User_1.hp_basic<=0:
         print("vous êtes mort dommage")
         break
-    if enemie_choisie >= len(enemie):
+    if nb_enemie >= len(enemie):
         print("vous avez vaincu tout les enemies")
         break
-    if enemie[enemie_choisie].hp_basic<=0:
-        print(f"vous avez vaincu un {enemie[enemie_choisie].name_perso}")
-        enemie_choisie+=1
+    if enemie[nb_enemie].hp_basic<=0:
+        print(f"vous avez vaincu un {enemie[nb_enemie].name_perso}")
+        nb_enemie+=1
         
 
         
@@ -94,7 +99,7 @@ while True:
         #     break
         
         print(f"vous avez {User_1.hp_basic} point de vie")
-        print(f"{enemie[enemie_choisie].name_perso} à {enemie[enemie_choisie].hp_basic} point de vie")
+        print(f"{enemie[nb_enemie].name_perso} à {enemie[nb_enemie].hp_basic} point de vie")
         if classe_choisie == 0:
             input_user = str(input("quel est votre action ? vous reposer ou attaquer ? "))
             
@@ -103,19 +108,22 @@ while True:
                 
                 if User_1.get_mana() <= 0 or User_1.get_mana()-(niveau_de_sort * 20)<0: 
                     print("Vous n'avez pas assez de mana pour attaquer")
+                    print("--------------------------------------")
                 
                 else : 
-                    enemie[enemie_choisie].magic_dammage_reduction(User_1.weapon.magic_damage, niveau_de_sort, User_1)
-                    print(User_1.get_mana())
+                    enemie[nb_enemie].magic_dammage_reduction(User_1.weapon.magic_damage, niveau_de_sort, User_1)
+                    print(f"vous avez {User_1.get_mana()} mana")
+                    print("--------------------------------------")
             
                     
             if input_user.lower() == "reposer":
                 print(f"vousrecupérez {User_1.recup_mana()} mana")
                 print(f"vous avez {User_1.get_mana()} mana")
+                print("--------------------------------------")
                 
              
         if classe_choisie ==  1:
-            enemie[enemie_choisie].dammage_reduction(User_1.weapon.dammage, User_1)
+            enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
         
             
             
@@ -142,8 +150,7 @@ while True:
 #! faire les attaques en mode machin attaque machin avec telle arme
 
 
-#! Créer une classe Spell avec les attributs name, damage et mana.
-#! La méthode "attack" sera également surchargée afin de donner le choix au magicien entre lancer un sort ou attaquer avec son arme.
+#! donner le choix au magicien entre lancer un sort ou attaquer avec son arme en choissisant sont sort
 #! Classe arena 
 
 #? Bonus
