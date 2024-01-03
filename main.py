@@ -14,9 +14,9 @@ Lance = Weapons("lance", 50, 0, 0, 0)
 Hache = Weapons("Hache", 30, 0, 0, 10)#ce n'est pas moi madame c'est la hache
 
 #armes magiques
-Baton = Weapons("un baton", 20, 10, 0, 10)
-Baguette = Weapons("baguette", 0, 30, 50, 0)#la france
-Sceptre = Weapons("Sceptre", 20, 20, 100, 0)
+Baton = Weapons("un baton", 20, 1, 0, 10)
+Baguette = Weapons("baguette", 0, 3, 50, 0)#la france
+Sceptre = Weapons("Sceptre", 20, 2, 100, 0)
 
 
 #armures physique
@@ -44,13 +44,14 @@ Golem_magique = Enemy("Golem magique", 450, armure_lourde, La_main)
 Elentaire = Enemy("Esprit élémentaire", 200, armure_archmage, Sceptre)
 
 #instance des sorts
-Etincelle = Spell("ettincelle", 10, 15)
-Boule_de_feu = Spell("boule de feu", 20, 30)
-Vague_tonante = Spell("vague tonante", 50, 70)
+Etincelle = Spell("ettincelle", 10, 45)
+Boule_de_feu = Spell("boule de feu", 20, 60)
+Vague_tonante = Spell("vague tonante", 50, 100)
 
 classe = [Mage, Barbarian]
 armor = [pas_armure, armure_legere, armure_moyenne, armure_lourde, armure_magique, armure_full_parade, armure_archmage]
 weapon = [La_main, Massue, Lance, Hache, Baton, Baguette, Sceptre]
+spell = [Etincelle,Boule_de_feu, Vague_tonante]
 enemie_physique= [Gobelin, Hobogoblin, Orc, Ogre]
 enemie_magique =[Salamendre_elementaire, Sorciere, Golem_magique, Elentaire]
 classe_choisie, armor_choisie, weapon_choisie, difficulte_choisie = len(classe), len(armor), len(weapon), len(enemie_physique)
@@ -87,13 +88,13 @@ while True:
         print("vous avez vaincu tout les enemies")
         break
     if enemie[nb_enemie].hp_basic<=0:
-        print(f"vous avez vaincu un {enemie[nb_enemie].name_perso}")
+        print(f"vous avez vaincu un(e) {enemie[nb_enemie].name_perso}")
         nb_enemie+=1
         
 
         
     else:
-        #input_user = str(input("veuillez entrer votre action : "))
+        #input_user = str(input("veuillez entrer votre action : "))#todo jsp quoi en faire
         # if input_user.lower() == "quitter":
         #     print("vous quitez le jeu")
         #     break
@@ -104,17 +105,25 @@ while True:
             input_user = str(input("quel est votre action ? vous reposer ou attaquer ? "))
             
             if input_user.lower() == "attaquer":
-                niveau_de_sort = int(input("vous voulez lancer un sort de niveau combien ?: "))
+                input_user = str(input("vous voulez lancer un sort ou taper au corps à corps ? "))
                 
-                if User_1.get_mana() <= 0 or User_1.get_mana()-(niveau_de_sort * 20)<0: 
-                    print("Vous n'avez pas assez de mana pour attaquer")
+                if input_user.lower() == "lancer":
+                    sort_a_lancer = int(input("vous voulez lancer quel sort 1: Etincelle 2: Boule_de_feu 3: Vague_tonante ? "))-1 #EN COURS
+                                        
+                    if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_coast)<0: #todo à modifier avec le cout des sort en mana
+                        print("Vous n'avez pas assez de mana pour attaquer")
+                        print("--------------------------------------")
+                    
+                    else : 
+                        enemie[nb_enemie].magic_dammage_reduction(User_1.weapon.magic_damage, spell[sort_a_lancer], User_1)
+                        print(f"vous avez {User_1.get_mana()} mana")
+                        print("--------------------------------------")
+                        
+                if input_user.lower() == "taper":
+                    enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
+                    print(f"vous attaquez {enemie[nb_enemie].name_perso}")
                     print("--------------------------------------")
-                
-                else : 
-                    enemie[nb_enemie].magic_dammage_reduction(User_1.weapon.magic_damage, niveau_de_sort, User_1)
-                    print(f"vous avez {User_1.get_mana()} mana")
-                    print("--------------------------------------")
-            
+
                     
             if input_user.lower() == "reposer":
                 print(f"vousrecupérez {User_1.recup_mana()} mana")
@@ -124,33 +133,17 @@ while True:
              
         if classe_choisie ==  1:
             enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
-        
+            #tout à faire ici en gros
             
             
-                
-        
-
-    
-        
-
-
-# print(Mage.name_classe) 
-
-#print(Michel.dammage_reduction(Francois.weapon.dammage))
-
-# Michel.weapon.degats(Francois)
-# print(Michel.weapon.degats(Francois))
-# print(Francois.hp_basic)
-
-
 
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
-#! regler la puissance des attaque des sorcier  et ajouter des sort 
-#! instancier les 2 attaques pour le barbare et tout basiquement
+#! regler la puissance des attaque des sorcier  (cout mana, degats et armes)
+#! instancier les 2 attaques pour le barbare et tout faire basiquement
 #! faire les attaques en mode machin attaque machin avec telle arme
 
-
-#! donner le choix au magicien entre lancer un sort ou attaquer avec son arme en choissisant sont sort
+#! faire pour demander les sort/ les armes une boucle for qui cite direct le nom se qui permet d'automatiser tout ça FAIRE UNE FONCTION
+#! comme ça on l'appelle pour les sort/ les armes ect... qui prend en argument une liste et le parmetre à retourner
 #! Classe arena 
 
 #? Bonus
