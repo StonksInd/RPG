@@ -14,4 +14,5 @@ class Spell:
         self.spell_dammage = spell_dammage
         self.mana_coast = mana_coast
         
-    
+    def __str__(self):
+        return self.spell_name

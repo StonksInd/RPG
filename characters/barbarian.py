@@ -22,7 +22,7 @@ class Barbarian(Character):
         self.hp_basic = hp_basic
         self.weapon = weapon
         
- 
+
             
 
     

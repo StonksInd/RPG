@@ -19,3 +19,6 @@ class Enemy(Character):
         self.armor = armor
         self.weapon = weapon
         self.mana_basic = mana_basic
+
+    def __str__(self):
+        return self.name_perso

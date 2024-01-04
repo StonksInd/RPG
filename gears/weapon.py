@@ -14,4 +14,5 @@ class Weapons:
         self.armor_weapon = armor_weapon
         
 
-
+    def __str__(self):
+        return self.name_weapon

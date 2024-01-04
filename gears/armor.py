@@ -11,3 +11,6 @@ class Armor:
         self.armor = armor
         self.thorns = thorns
         self.magic_resistance = magic_resistance
+        
+    def __str__(self):
+        return self.name_armor

@@ -28,7 +28,7 @@ armure_lourde = Armor("armure lourde", 130, 15, 0)#le PEKKA
 #armures magiques
 armure_magique = Armor("armure magique", 20, 0, 100)#c'est de la MAAAAGIIEEE
 armure_full_parade = Armor("armure de renvoie de dégats", 0, 75, 0)#apres la pique je touche
-armure_archmage = Armor("armure magique", 0, 0, 150)
+armure_archmage = Armor("armure d'archmage", 0, 0, 150)
     
        
 #instance des enemies physique
@@ -56,16 +56,21 @@ enemie_physique= [Gobelin, Hobogoblin, Orc, Ogre]
 enemie_magique =[Salamendre_elementaire, Sorciere, Golem_magique, Elentaire]
 classe_choisie, armor_choisie, weapon_choisie, difficulte_choisie = len(classe), len(armor), len(weapon), len(enemie_physique)
 
-# Michel = Enemy("Enemy", 100, armure_moyenne, Baton)
-# Francois = Mage("jean", armure_moyenne, Baton)
+def send_name(tab):
+    str_return = ""
+    for i in range (len(tab)):
+        str_return += str(i) + ":" + str(tab[i])+ ", "
+    return str_return
+
+
 
 name_user = str(input("quel est votre nom ? : "))
 while classe_choisie < 0 or classe_choisie > len(classe)-1:
-    classe_choisie = int(input("veuillez entrer votre classe, 0: Mage, 1: Barbarian "))
+    classe_choisie = int(input(f"veuillez entrer votre classe 0:Mage, 1:Barbarian "))
 while armor_choisie <0 or armor_choisie > len(armor)-1:
-    armor_choisie = int(input("quelle armure voulez vous 0:pas_armure, 1:armure_legere, 2:armure_moyenne, 3:armure_lourde, 4:armure_magique, 5:armure_full_parade, 6:armure_archmage "))
+    armor_choisie = int(input(f"quelle armure voulez vous {send_name(armor)} "))
 while weapon_choisie < 0 or weapon_choisie > len(weapon)-1:
-    weapon_choisie = int(input("quelle arme voulez vous 0:La_main, 1:Massue, 2:Lance, 3:Hache, 4:Baton, 5:Baguette, 6:Sceptre "))
+    weapon_choisie = int(input(f"quelle arme voulez vous {send_name(weapon)} "))
 while difficulte_choisie < 0 or difficulte_choisie > len(enemie_magique)-1:
     difficulte_choisie = int(input("quelle difficulté voulez vous ? la 1, 2, 3 ou 4 ")) -1
 
@@ -108,9 +113,9 @@ while True:
                 input_user = str(input("vous voulez lancer un sort ou taper au corps à corps ? "))
                 
                 if input_user.lower() == "lancer":
-                    sort_a_lancer = int(input("vous voulez lancer quel sort 1: Etincelle 2: Boule_de_feu 3: Vague_tonante ? "))-1 #EN COURS
+                    sort_a_lancer = int(input(f"vous voulez lancer quel sort {print(send_name(spell))} ? ")) 
                                         
-                    if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_coast)<0: #todo à modifier avec le cout des sort en mana
+                    if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_coast)<0:
                         print("Vous n'avez pas assez de mana pour attaquer")
                         print("--------------------------------------")
                     
@@ -135,15 +140,12 @@ while True:
             enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
             #tout à faire ici en gros
             
-            
 
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
 #! regler la puissance des attaque des sorcier  (cout mana, degats et armes)
 #! instancier les 2 attaques pour le barbare et tout faire basiquement
 #! faire les attaques en mode machin attaque machin avec telle arme
 
-#! faire pour demander les sort/ les armes une boucle for qui cite direct le nom se qui permet d'automatiser tout ça FAIRE UNE FONCTION
-#! comme ça on l'appelle pour les sort/ les armes ect... qui prend en argument une liste et le parmetre à retourner
 #! Classe arena 
 
 #? Bonus

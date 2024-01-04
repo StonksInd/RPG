@@ -29,8 +29,8 @@ class Character:
     #         print(f"{self.name_perso} a été vaincu!")
     
     
-    
-        
+
+            
     def dammage_reduction(self, dammage, other) -> int:
         armor = self.armor.armor
         crit_esquive = randint(0,101)
