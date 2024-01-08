@@ -132,7 +132,7 @@ while True:
 
                     
             if input_user.lower() == "reposer":
-                print(f"vousrecupérez {User_1.recup_mana()} mana")
+                print(f"vousrecupérez {User_1.mana_basic-User_1.recup_mana()} mana") #modifier pour avoir le mana en négatif
                 print(f"vous avez {User_1.get_mana()} mana")
                 print("--------------------------------------")
                 
@@ -157,7 +157,7 @@ while True:
             if enemie_attack <=3:
                 User_1.dammage_reduction(enemie[nb_enemie].weapon.dammage, enemie[nb_enemie])
                 print(f"{enemie[nb_enemie].name_perso} attaque {User_1.name_perso} avec {enemie[nb_enemie].weapon.name_weapon}")
-            if enemie_attack <= 4:
+            if enemie_attack >= 4:
                 print(f"{enemie[nb_enemie].name_perso} recupère {enemie[nb_enemie].recup_hp()} hp")
                 print(f"{enemie[nb_enemie].name_perso} a {enemie[nb_enemie].hp_basic} hp")
                 print("--------------------------------------")
@@ -190,7 +190,7 @@ while True:
             
             
 
-#todo faire des armes avec plus de crit mais moins de degats et inversemment 
+#! faire un retour propre des hp et du mana et mettre en place arena avec un clean du main 
 #! regler la puissance des attaque des sorcier  (cout mana, degats et armes)
 
 

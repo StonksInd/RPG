@@ -48,7 +48,7 @@ class Character:
             self.hp_basic -= ((1-(armor/500)) * dammage)
             other.hp_basic -= ((1-(other.armor.armor/500)) * self.armor.thorns)
             print(f"l'armure de {other.name_perso} vous inflige {int((1-(other.armor.armor/500)) * self.armor.thorns)}")
-            print(f"{self.name_perso} avez infligé {int(((1-(armor/500)) * dammage))}")
+            print(f"{self.name_perso} a infligé {int(((1-(armor/500)) * dammage))} a {otehr.name_perso} ")
         self.hp_basic = int(self.hp_basic)
         other.hp_basic = int(other.hp_basic)
         return self.hp_basic, other.hp_basic
