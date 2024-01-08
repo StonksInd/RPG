@@ -144,7 +144,9 @@ while True:
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
 #! regler la puissance des attaque des sorcier  (cout mana, degats et armes)
 #! instancier les 2 attaques pour le barbare et tout faire basiquement
+
 #! faire les attaques en mode machin attaque machin avec telle arme
+#! pour les deux attque faire avec self.nb_attack
 
 #! Classe arena 
 
