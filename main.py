@@ -9,14 +9,14 @@ from gears.spell import Spell
 
 #armes physique
 La_main = Weapons("Ta main", 10, 0, 0, 0)
-Massue = Weapons("Une massue", 20, 0, 0, 20,)#BONK
-Lance = Weapons("lance", 50, 0, 0, 0, 10)
-Hache = Weapons("Hache", 30, 0, 0, 10, 15)#ce n'est pas moi madame c'est la hache
+Massue = Weapons("Une massue", 20, 0, 0, 20)#BONK
+Lance = Weapons("lance", 50, 0, 0, 0)
+Hache = Weapons("Hache", 30, 0, 0, 10)#ce n'est pas moi madame c'est la hache
 
 #armes magiques
-Baton = Weapons("un baton", 20, 1, 100, 10)
-Baguette = Weapons("baguette", 0, 3, 0, 0)#la france
-Sceptre = Weapons("Sceptre", 20, 2, 50, 0)
+Baton = Weapons("un baton", 20, 1, 0, 10)
+Baguette = Weapons("baguette", 0, 3, 50, 0)#la france
+Sceptre = Weapons("Sceptre", 20, 2, 100, 0)
 
 
 #armures physique
@@ -32,16 +32,16 @@ armure_archmage = Armor("armure d'archmage", 0, 0, 150)
     
        
 #instance des enemies physique
-Gobelin = Enemy("Gobelin", 50, armure_legere, Massue)
-Hobogoblin = Enemy("Hobogoblin", 150, armure_moyenne, Lance)
-Orc = Enemy("Orc", 250, armure_lourde, Hache)
-Ogre = Enemy("Ogre", 350, pas_armure, Massue)
+Gobelin = Enemy("Gobelin", 50, armure_legere, Massue, physique)
+Hobogoblin = Enemy("Hobogoblin", 150, armure_moyenne, Lance, physique)
+Orc = Enemy("Orc", 250, armure_lourde, Hache, physique)
+Ogre = Enemy("Ogre", 350, pas_armure, Massue, physique)
 
 #instance des enemies magique
-Salamendre_elementaire = Enemy("Salamendre de feu", 100, armure_full_parade, La_main)
-Sorciere = Enemy("Sorciere", 150, armure_archmage, Baguette)
-Golem_magique = Enemy("Golem magique", 450, armure_lourde, La_main)
-Elentaire = Enemy("Esprit élémentaire", 200, armure_archmage, Sceptre)
+Salamendre_elementaire = Enemy("Salamendre de feu", 100, armure_full_parade, La_main, magique)
+Sorciere = Enemy("Sorciere", 150, armure_archmage, Baguette, magique)
+Golem_magique = Enemy("Golem magique", 450, armure_lourde, La_main, magique)
+Elentaire = Enemy("Esprit élémentaire", 200, armure_archmage, Sceptre, magique)
 
 #instance des sorts
 Etincelle = Spell("ettincelle", 10, 45)
@@ -52,7 +52,7 @@ classe = [Mage, Barbarian]
 armor = [pas_armure, armure_legere, armure_moyenne, armure_lourde, armure_magique, armure_full_parade, armure_archmage]
 weapon = [La_main, Massue, Lance, Hache, Baton, Baguette, Sceptre]
 spell = [Etincelle,Boule_de_feu, Vague_tonante]
-enemie_physique = [Gobelin, Hobogoblin, Orc, Ogre]
+enemie_physique= [Gobelin, Hobogoblin, Orc, Ogre]
 enemie_magique =[Salamendre_elementaire, Sorciere, Golem_magique, Elentaire]
 classe_choisie, armor_choisie, weapon_choisie, difficulte_choisie = len(classe), len(armor), len(weapon), len(enemie_physique)
 
@@ -115,18 +115,18 @@ while True:
                 if input_user.lower() == "lancer":
                     sort_a_lancer = int(input(f"vous voulez lancer quel sort {print(send_name(spell))} ? ")) 
                                         
-                    if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_cost)<0:
+                    if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_coast)<0:
                         print("Vous n'avez pas assez de mana pour attaquer")
                         print("--------------------------------------")
                     
                     else : 
                         enemie[nb_enemie].magic_dammage_reduction(User_1.weapon.magic_damage, spell[sort_a_lancer], User_1)
-                        print(f"vous avez {User_1.get_mana()} mana")
+                        print(f"{User_1.name_perso} utilise {spell[sort_a_lancer].spell_name}, il vous reste {User_1.get_mana()} mana")
                         print("--------------------------------------")
                         
                 if input_user.lower() == "taper":
                     enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
-                    print(f"vous attaquez {enemie[nb_enemie].name_perso}")
+                    print(f"{User_1.name_perso} attaque {enemie[nb_enemie].name_perso} avec {User_1.weapon.name_weapon}")
                     print("--------------------------------------")
 
                     
@@ -142,7 +142,7 @@ while True:
             
             if input_user.lower() == "attaquer":
                 enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
-                print(f"vous attaquez {enemie[nb_enemie].name_perso}")
+                print(f"{User_1.name_perso} attaque {enemie[nb_enemie].name_perso} avec {User_1.weapon.name_weapon}")
                 print("--------------------------------------")
 
                     
@@ -150,17 +150,50 @@ while True:
                 print(f"vous recupérez {User_1.recup_hp()} hp")
                 print(f"vous avez {User_1.hp_basic()} hp")
                 print("--------------------------------------")
-            enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
-        #ennemie attaque et fait x degats 
-        #ennemie choisie aléatoirement l'action en mode machin à choisie de faire machin
-        #action possible reposer, reposer, taper, lancer et le mob ne se repose pas quand il est full hp 
+
+        if enemie[nb_enemie].methode() == "physique":
+            enemie_attack = randint(0,6)
+            if enemie_attack <=3:
+                User_1.dammage_reduction(enemie.weapon.dammage, enemie)
+                print(f"{enemie[nb_enemie].name_perso} attaque {User_1} avec {enemie[nb_enemie].weapon.name_weapon}")
+            if enemie_attack <= 4:
+                print(f"{enemie[nb_enemie].name_perso} recupère {enemie[nb_enemie].recup_hp()} hp")
+                print(f"{enemie[nb_enemie].name_perso} a {enemie[nb_enemie].hp_basic()} hp")
+                print("--------------------------------------")
+
+        if enemie[nb_enemie].methode() == "magique":
+            enemie_attack <= randint(0,7)
+            if enemie_attack <=3:
+                spell[randint(0, len(spell))]
+                if enemie[nb_enemie].get_mana() <= 0 or enemie[nb_enemie].get_mana()-(spell.mana_coast)<0:
+                    print(f"{enemie[nb_enemie].name_perso} recupère {enemie[nb_enemie].recup_mana()} mana")
+                    print(f"{enemie[nb_enemie].name_perso} a {enemie[nb_enemie].get_mana()} mana")
+                    print("--------------------------------------")
+
+                else : 
+                    User_1.magic_dammage_reduction(enemie[nb_enemie].weapon.magic_damage, spell, enemie[nb_enemie])
+                    print(f"{enemie[nb_enemie].name_perso} utilise {spell.spell_name}, il lui reste {enemie[nb_enemie].get_mana()} mana")
+                    print("--------------------------------------")
+
+            if enemie_attack == 4:
+                print(f"{enemie[nb_enemie].name_perso} recupère {enemie[nb_enemie].recup_mana()} mana")
+                print(f"{enemie[nb_enemie].name_perso} a {enemie[nb_enemie].get_mana()} mana")
+                print("--------------------------------------")
+
+            else:
+                User_1.dammage_reduction(enemie[nb_enemie].weapon.dammage, enemie[nb_enemie])
+                    print(f"{enemie[nb_enemie].name_perso} attaque {User_1.name_perso} avec {enemie[nb_enemie].weapon.name_weapon}")
+                    print("--------------------------------------")
+
+
+            
             
 
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
 #! regler la puissance des attaque des sorcier  (cout mana, degats et armes)
-#! attaque ennemie 
+
+
 #! Classe arena 
-#wepons sans s nom
 
 #? Bonus
 #?Carte et salle 
