@@ -137,6 +137,19 @@ while True:
                 
              
         if classe_choisie ==  1:
+            for i in range(2):
+                input_user = str(input("quel est votre action ? vous reposer ou attaquer ? "))
+            
+            if input_user.lower() == "attaquer":
+                enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
+                print(f"vous attaquez {enemie[nb_enemie].name_perso}")
+                print("--------------------------------------")
+
+                    
+            if input_user.lower() == "reposer":
+                print(f"vous recupérez {User_1.recup_hp()} hp")
+                print(f"vous avez {User_1.hp_basic()} hp")
+                print("--------------------------------------")
             enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
             #tout à faire ici en gros
             
