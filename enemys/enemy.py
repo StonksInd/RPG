@@ -9,7 +9,8 @@ class Enemy(Character):
                  hp_basic : int,
                  armor : Armor,
                  weapon : Weapons,
-                 mana_basic : int = 0
+                 mana_basic : int = 0,
+                 type : str
                  
                  ):
         
@@ -22,3 +23,18 @@ class Enemy(Character):
 
     def __str__(self):
         return self.name_perso
+    
+    def get_mana(self) -> int:
+    return (self.weapon.mana + self.mana_basic)
+    
+    
+    def recup_mana(self):
+        self.mana_basic += randint(10, 50)
+        return self.mana_basic
+
+    def recup_hp(self):
+    self.hp_basic += randint(20, 60)
+    return self.hp_basic
+
+    def return_type(self):
+        return self.type
