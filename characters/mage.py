@@ -20,7 +20,6 @@ class Mage(Character):
         self.armor = armor
         self.weapon = weapon
         self.name_classe = name_classe
-        self.nb_attack = nb_attack
         self.mana_basic = mana_basic
         self.hp_basic = hp_basic
         

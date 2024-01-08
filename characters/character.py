@@ -35,6 +35,7 @@ class Character:
         armor = self.armor.armor + self.weapon.armor_weapon
         crit_esquive = randint(0,101)
         
+        
         if crit_esquive <= other.weapon.taux_crit_weapon:
             print("vous avez fait un critique")
             self.hp_basic -= ((1-(armor/500)) * (dammage *1.5))
@@ -46,8 +47,8 @@ class Character:
         else:
             self.hp_basic -= ((1-(armor/500)) * dammage)
             other.hp_basic -= ((1-(other.armor.armor/500)) * self.armor.thorns)
-            print(f"l'armure de l'énemie vous inflige {int((1-(other.armor.armor/500)) * self.armor.thorns)}")
-            print(f"vous avez infligé {int(((1-(armor/500)) * dammage))}")
+            print(f"l'armure de {other.name_perso} vous inflige {int((1-(other.armor.armor/500)) * self.armor.thorns)}")
+            print(f"{self.name_perso} avez infligé {int(((1-(armor/500)) * dammage))}")
         self.hp_basic = int(self.hp_basic)
         other.hp_basic = int(other.hp_basic)
         return self.hp_basic, other.hp_basic

@@ -17,9 +17,9 @@ class Barbarian(Character):
         
         self.name_perso = name_perso
         self.name_classe = name_classe
-        self.nb_attack = nb_attack
         self.hp_basic = hp_basic
         self.weapon = weapon
+        self.armor = armor
         
         
     def recup_hp(self):
