@@ -1,6 +1,7 @@
 from characters.character import Character
 from gears.armor import Armor
 from gears.weapon import Weapons
+from random import randint
 
 class Barbarian(Character):
     
@@ -21,6 +22,11 @@ class Barbarian(Character):
         self.nb_attack = nb_attack
         self.hp_basic = hp_basic
         self.weapon = weapon
+        
+        
+    def recup_hp(self):
+        self.hp_basic += randint(20, 60)
+        return self.hp_basic        
         
 
             

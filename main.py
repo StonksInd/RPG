@@ -159,7 +159,6 @@ while True:
 #! instancier les 2 attaques pour le barbare et tout faire basiquement
 
 #! faire les attaques en mode machin attaque machin avec telle arme
-#! pour les deux attque faire avec self.nb_attack
 
 #! Classe arena 
 

@@ -46,6 +46,7 @@ class Character:
         else:
             self.hp_basic -= ((1-(armor/500)) * dammage)
             other.hp_basic -= ((1-(other.armor.armor/500)) * self.armor.thorns)
+            print(f"l'armure de l'énemie vous inflige {int((1-(other.armor.armor/500)) * self.armor.thorns)}")
             print(f"vous avez infligé {int(((1-(armor/500)) * dammage))}")
         self.hp_basic = int(self.hp_basic)
         other.hp_basic = int(other.hp_basic)

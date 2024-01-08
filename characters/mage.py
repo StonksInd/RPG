@@ -29,9 +29,6 @@ class Mage(Character):
     def get_mana(self) -> int:
         return (self.weapon.mana + self.mana_basic)
     
-    def attaque_magique(self, niveau_de_sort):#permet de différencier les sort lvl 1 et 2 ect... et de conso le mana de l'attack
-        cout_mana_spell = 20*niveau_de_sort
-        return cout_mana_spell
     
     def recup_mana(self):
         self.mana_basic += randint(10, 50)
