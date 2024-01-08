@@ -10,8 +10,8 @@ from gears.spell import Spell
 #armes physique
 La_main = Weapons("Ta main", 10, 0, 0, 0)
 Massue = Weapons("Une massue", 20, 0, 0, 40)#BONK
-Lance = Weapons("lance", 50, 0, 0, 0, 15)
-Hache = Weapons("Hache", 30, 0, 0, 20, 10)#ce n'est pas moi madame c'est la hache
+Lance = Weapons("lance", 50, 0, 0, 0, 20)
+Hache = Weapons("Hache", 30, 0, 0, 20, 15)#ce n'est pas moi madame c'est la hache
 
 #armes magiques
 Baton = Weapons("un baton", 20, 1, 0, 10)
@@ -82,7 +82,7 @@ print(f"Vous avez choisi {User_1.name_perso} comme nom. ")
 print(f"Vous avez choisi {User_1.name_classe} comme classe, elle à {User_1.hp_basic} point de vie")
 print(f"Vous avez choisi l'armure {User_1.armor.name_armor}, elle a {User_1.armor.armor} d'armure, {User_1.armor.magic_resistance} d'armure magique et {User_1.armor.thorns} de thorns. ")
 print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.weapon.dammage} dégats, {User_1.weapon.magic_damage} dégat magique, donne {User_1.weapon.mana} mana et donne {User_1.weapon.armor_weapon} points d'armures.")
-print("--------------------------------------")
+
 
 nb_enemie = 0
 while True:
@@ -103,7 +103,7 @@ while True:
         # if input_user.lower() == "quitter":
         #     print("vous quitez le jeu")
         #     break
-        
+        print("--------------------------------------")
         print(f"vous avez {User_1.hp_basic} point de vie")
         print(f"{enemie[nb_enemie].name_perso} à {enemie[nb_enemie].hp_basic} point de vie")
         if classe_choisie == 0:
@@ -114,20 +114,20 @@ while True:
                 
                 
                 if input_user.lower() == "lancer":
-                    sort_a_lancer = int(input(f"vous voulez lancer quel sort {print(send_name(spell))} ? ")) 
+                    sort_a_lancer = int(input(f"vous voulez lancer quel sort {send_name(spell)} ? ")) 
                     print("--------------------------------------")
                     if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_cost)<0:
                         print("Vous n'avez pas assez de mana pour attaquer")
                         print("--------------------------------------")
                     
                     else : 
+                        print(f"{User_1.name_perso} utilise {spell[sort_a_lancer].spell_name} sur {enemie[nb_enemie].name_perso}, {User_1.name_perso} a {User_1.get_mana()} mana")
                         enemie[nb_enemie].magic_dammage_reduction(User_1.weapon.magic_damage, spell[sort_a_lancer], User_1)
-                        print(f"{User_1.name_perso} utilise {spell[sort_a_lancer].spell_name} sur {enemie[nb_enemie].name_perso}, il vous reste {User_1.get_mana()} mana")
                         print("--------------------------------------")
                         
                 if input_user.lower() == "taper":
-                    enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
                     print(f"{User_1.name_perso} attaque {enemie[nb_enemie].name_perso} avec {User_1.weapon.name_weapon}")
+                    enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
                     print("--------------------------------------")
 
                     
@@ -140,25 +140,27 @@ while True:
         if classe_choisie ==  1:
             for i in range(2):
                 input_user = str(input("quel est votre action ? vous reposer ou attaquer ? "))
+                print("--------------------------------------")
             
-            if input_user.lower() == "attaquer":
-                enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
-                print(f"{User_1.name_perso} attaque {enemie[nb_enemie].name_perso} avec {User_1.weapon.name_weapon}")
-                print("--------------------------------------")
+                if input_user.lower() == "attaquer":
+                    print(f"{User_1.name_perso} attaque {enemie[nb_enemie].name_perso} avec {User_1.weapon.name_weapon}")
+                    enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
+                    print("--------------------------------------")
 
-                    
-            if input_user.lower() == "reposer":
-                print(f"vous recupérez {User_1.recup_hp()} hp")
-                print(f"vous avez {User_1.hp_basic()} hp")
-                print("--------------------------------------")
+                        
+                if input_user.lower() == "reposer":
+                    print(f"vous recupérez {User_1.recup_hp()} hp")
+                    print(f"vous avez {User_1.hp_basic()} hp")
+                    print("--------------------------------------")
 
         if enemie[nb_enemie].return_type() == "physique":
             enemie_attack = randint(0,6)
             if enemie_attack <=3:
-                User_1.dammage_reduction(enemie[nb_enemie].weapon.dammage, enemie[nb_enemie])
                 print(f"{enemie[nb_enemie].name_perso} attaque {User_1.name_perso} avec {enemie[nb_enemie].weapon.name_weapon}")
+                User_1.dammage_reduction(enemie[nb_enemie].weapon.dammage, enemie[nb_enemie])
+                
             if enemie_attack >= 4:
-                print(f"{enemie[nb_enemie].name_perso} recupère {enemie[nb_enemie].recup_hp()} hp")
+                print(f"{enemie[nb_enemie].name_perso} recupère {enemie[nb_enemie].hp_basic -enemie[nb_enemie].recup_hp()} hp")
                 print(f"{enemie[nb_enemie].name_perso} a {enemie[nb_enemie].hp_basic} hp")
                 print("--------------------------------------")
 
@@ -182,8 +184,8 @@ while True:
                 print("--------------------------------------")
 
             else:
-                User_1.dammage_reduction(enemie[nb_enemie].weapon.dammage, enemie[nb_enemie])
                 print(f"{enemie[nb_enemie].name_perso} attaque {User_1.name_perso} avec {enemie[nb_enemie].weapon.name_weapon}")
+                User_1.dammage_reduction(enemie[nb_enemie].weapon.dammage, enemie[nb_enemie])
                 print("--------------------------------------")
 
 

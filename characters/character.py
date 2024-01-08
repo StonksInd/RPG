@@ -47,8 +47,8 @@ class Character:
         else:
             self.hp_basic -= ((1-(armor/500)) * dammage)
             other.hp_basic -= ((1-(other.armor.armor/500)) * self.armor.thorns)
-            print(f"l'armure de {other.name_perso} vous inflige {int((1-(other.armor.armor/500)) * self.armor.thorns)}")
-            print(f"{self.name_perso} a infligé {int(((1-(armor/500)) * dammage))} a {otehr.name_perso} ")
+            print(f"{other.name_perso} a infligé {int(((1-(armor/500)) * dammage))} dégats à {self.name_perso} ")
+            print(f"l'armure de {self.name_perso} inflige {int((1-(other.armor.armor/500)) * self.armor.thorns)} dégats de thorns à {other.name_perso}")
         self.hp_basic = int(self.hp_basic)
         other.hp_basic = int(other.hp_basic)
         return self.hp_basic, other.hp_basic
@@ -72,7 +72,7 @@ class Character:
         else:
             self.hp_basic -= ((1-(magic_resistance/500)) * (magic_dammage * spell_a_lancer.spell_dammage))
             other.mana_basic -= spell_a_lancer.mana_cost
-            print(f"vous avez infligé {int(((1-(magic_resistance/500)) * (magic_dammage *spell_a_lancer.spell_dammage)))}")
+            print(f"{other.name_perso} infligé {int(((1-(magic_resistance/500)) * (magic_dammage *spell_a_lancer.spell_dammage)))} à {self.name_perso}")
         self.hp_basic = int(self.hp_basic)
         
         return self.hp_basic, other.mana_basic
