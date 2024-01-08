@@ -6,6 +6,7 @@ class Weapons:
                  magic_damage : int,
                  mana : int,
                  armor_weapon : int,
+                 taux_crit_weapon : int = 5,
                  ):
         self.name_weapon = name_weapon
         self.dammage = dammage

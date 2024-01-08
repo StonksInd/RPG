@@ -9,14 +9,14 @@ from gears.spell import Spell
 
 #armes physique
 La_main = Weapons("Ta main", 10, 0, 0, 0)
-Massue = Weapons("Une massue", 20, 0, 0, 20)#BONK
-Lance = Weapons("lance", 50, 0, 0, 0)
-Hache = Weapons("Hache", 30, 0, 0, 10)#ce n'est pas moi madame c'est la hache
+Massue = Weapons("Une massue", 20, 0, 0, 20,)#BONK
+Lance = Weapons("lance", 50, 0, 0, 0, 10)
+Hache = Weapons("Hache", 30, 0, 0, 10, 15)#ce n'est pas moi madame c'est la hache
 
 #armes magiques
-Baton = Weapons("un baton", 20, 1, 0, 10)
-Baguette = Weapons("baguette", 0, 3, 50, 0)#la france
-Sceptre = Weapons("Sceptre", 20, 2, 100, 0)
+Baton = Weapons("un baton", 20, 1, 100, 10)
+Baguette = Weapons("baguette", 0, 3, 0, 0)#la france
+Sceptre = Weapons("Sceptre", 20, 2, 50, 0)
 
 
 #armures physique
@@ -52,7 +52,7 @@ classe = [Mage, Barbarian]
 armor = [pas_armure, armure_legere, armure_moyenne, armure_lourde, armure_magique, armure_full_parade, armure_archmage]
 weapon = [La_main, Massue, Lance, Hache, Baton, Baguette, Sceptre]
 spell = [Etincelle,Boule_de_feu, Vague_tonante]
-enemie_physique= [Gobelin, Hobogoblin, Orc, Ogre]
+enemie_physique = [Gobelin, Hobogoblin, Orc, Ogre]
 enemie_magique =[Salamendre_elementaire, Sorciere, Golem_magique, Elentaire]
 classe_choisie, armor_choisie, weapon_choisie, difficulte_choisie = len(classe), len(armor), len(weapon), len(enemie_physique)
 
@@ -115,7 +115,7 @@ while True:
                 if input_user.lower() == "lancer":
                     sort_a_lancer = int(input(f"vous voulez lancer quel sort {print(send_name(spell))} ? ")) 
                                         
-                    if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_coast)<0:
+                    if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_cost)<0:
                         print("Vous n'avez pas assez de mana pour attaquer")
                         print("--------------------------------------")
                     
@@ -151,16 +151,16 @@ while True:
                 print(f"vous avez {User_1.hp_basic()} hp")
                 print("--------------------------------------")
             enemie[nb_enemie].dammage_reduction(User_1.weapon.dammage, User_1)
-            #tout à faire ici en gros
+        #ennemie attaque et fait x degats 
+        #ennemie choisie aléatoirement l'action en mode machin à choisie de faire machin
+        #action possible reposer, reposer, taper, lancer et le mob ne se repose pas quand il est full hp 
             
 
 #todo faire des armes avec plus de crit mais moins de degats et inversemment 
 #! regler la puissance des attaque des sorcier  (cout mana, degats et armes)
-#! instancier les 2 attaques pour le barbare et tout faire basiquement
-
-#! faire les attaques en mode machin attaque machin avec telle arme
-
+#! attaque ennemie 
 #! Classe arena 
+#wepons sans s nom
 
 #? Bonus
 #?Carte et salle 

@@ -11,9 +11,7 @@ class Barbarian(Character):
                  armor: Armor,
                  weapon : Weapons,
                  hp_basic : int = 200,
-                 name_classe : str = "Barbarian",
-                 nb_attack : int = 2,
-                 
+                 name_classe : str = "Barbarian",                 
                  ):
         
         

@@ -6,13 +6,13 @@ class Spell:
                  spell_name : str,
                  spell_dammage : int,
                  #dot_dammage
-                 mana_coast : int,
+                 mana_cost : int,
                  #porte_spell
                  
                  ):
         self.spell_name = spell_name
         self.spell_dammage = spell_dammage
-        self.mana_coast = mana_coast
+        self.mana_cost = mana_cost
         
     def __str__(self):
         return self.spell_name

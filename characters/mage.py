@@ -13,7 +13,6 @@ class Mage(Character):
                  hp_basic : int = 100,
                  name_classe : str = "mage",
                  mana_basic : int = 5000,#valeur de test
-                 nb_attack : int = 1,
                  ):
         
         
