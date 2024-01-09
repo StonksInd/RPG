@@ -3,7 +3,7 @@ from gears.armor import Armor
 from characters.character import Character
 from random import randint
 
-class Enemy(Character):
+class Ennemi(Character):
     
     def __init__(self,
                  name_perso : str,
@@ -41,3 +41,4 @@ class Enemy(Character):
 
     def return_type(self):
         return self.type
+

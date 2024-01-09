@@ -21,14 +21,6 @@ class Character:
         self.armor = armor
         self.weapon = weapon
         
-    # def prendre_degats(self, degats):
-    #     self.hp_basic -= degats
-    #     print(self.armor.armor)
-    #     if self.hp_basic <= 0:
-    #         self.hp_basic = 0
-    #         print(f"{self.name_perso} a été vaincu!")
-    
-    
 
             
     def dammage_reduction(self, dammage, other) -> int:
