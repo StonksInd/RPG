@@ -88,7 +88,7 @@ print(f"Vous avez choisi l'arme {User_1.weapon.name_weapon}, elle fait {User_1.w
             
             
 
-#! mettre en place arena avec un clean du main 
+#! mettre en place arena avec un clean du main en cours
 
 
 
