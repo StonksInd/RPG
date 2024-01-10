@@ -3,10 +3,11 @@ from characters.barbarian import Barbarian
 from characters.mage import Mage
 from gears.armor import Armor
 from gears.weapon import Weapons
-from enemys.enemy import Ennemi
+from ennemis.ennemi import Ennemi
 from random import randint
 from gears.spell import Spell
 
+#armes physique
 La_main = Weapons("Ta main", 10, 0, 0, 0)
 Massue = Weapons("Une massue", 20, 0, 0, 40)#BONK
 Lance = Weapons("lance", 50, 0, 0, 0, 20)
@@ -85,7 +86,7 @@ class Arena:
             weapon_choisie = int(input(f"quelle arme voulez vous {send_name(weapon)} "))
         
         User_2 = classe[classe_choisie](name_user, armor[armor_choisie], weapon[weapon_choisie])
-        
+        print("--------------------------------------")
         
         while True:
             users = [User_1, User_2]
@@ -96,57 +97,65 @@ class Arena:
             if User_2.hp_basic<=0:
                 print(f"{User_2.name_perso} est mort, {User_1.name_perso} a gagné !")
                 break            
-
-            print(f"{User_1.name_perso} a {User_1.hp_basic} point de vie")
-            print(f"{User_2.name_perso} a {User_2.hp_basic} point de vie")
             
-            for i in range (0, len(users)):
+
+            for i in range (2):
+                print(f"{User_1.name_perso} a {User_1.hp_basic} point de vie")
+                print(f"{User_2.name_perso} a {User_2.hp_basic} point de vie")
+                print("--------------------------------------")
                 if users[i].name_classe == "mage":
-                    input_user = str(input(f"quel est votre action {users[i].name_perso} ? vous reposer ou attaquer ? "))
+                    input_user = ""
+                    while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
+                        input_user = str(input(f"quel est votre action {users[i].name_perso} ? vous REPOSER ou ATTAQUER ? "))
                     
                     if input_user.lower() == "attaquer":
-                        input_user = str(input("vous voulez lancer un sort ou taper au corps à corps ? "))
+                        input_user = ""
+                        while input_user.lower() != "lancer" and input_user.lower() != "taper":
+                            input_user = str(input("vous voulez LANCER un sort ou TAPER au corps à corps ? "))
                         
                         if input_user.lower() == "lancer":
-                            sort_a_lancer = int(input(f"vous voulez lancer quel sort {send_name(spell)} ? ")) 
+                            sort_a_lancer = int(input(f"vous voulez lancer quel sort {send_name(spell)}? ")) 
                                                 
                             if users[i].get_mana() <= 0 or users[i].get_mana()-(spell[sort_a_lancer].mana_cost)<0:
                                 print("Vous n'avez pas assez de mana pour attaquer")
                                 print("--------------------------------------")
                             
                             else : 
+                                print(f"{users[i].name_perso} utilise {spell[sort_a_lancer].spell_name} sur {users[i-1].name_perso}, {User_1.name_perso} a {User_1.get_mana()} mana")
                                 users[i-1].magic_dammage_reduction(users[i].weapon.magic_damage, spell[sort_a_lancer], users[i])
-                                print(f"{users[i].name_perso} a {users[i].get_mana()} mana")
                                 print("--------------------------------------")
                                 
                         if input_user.lower() == "taper":
+                            print(f"{users[i].name_perso} attaque {users[i-1].name_perso} avec {users[i].weapon.name_weapon}")
                             users[i-1].dammage_reduction(users[i].weapon.dammage, users[i])
-                            print(f"vous attaquez {users[i-1].name_perso}")
                             print("--------------------------------------")
-
-                            
-                        if input_user.lower() == "reposer":
-                            print(f"vousrecupérez {users[i].recup_mana()} mana")
-                            print(f"vous avez {users[i].get_mana()} mana")
-                            print("--------------------------------------")
-                    i+=1
-                        
-                        
-                if users[i].name_classe ==  "Barbarian":
-                    for i in range(2):
-                        input_user = str(input(f"quel est votre action {users[i].name_perso}? vous reposer ou attaquer ? "))
-                    
-                    if input_user.lower() == "attaquer":
-                        users[i-1].dammage_reduction(users[i].weapon.dammage, users[i])
-                        print(f"vous attaquez {users[i-1].name_perso}")
-                        print("--------------------------------------")
 
                             
                     if input_user.lower() == "reposer":
-                        print(f"vous recupérez {users[i].recup_hp()} hp")
-                        print(f"vous avez {users[i].hp_basic()} hp")
+                        print(f"vousrecupérez {users[i].recup_mana()} mana")
+                        print(f"vous avez {users[i].get_mana()} mana")
                         print("--------------------------------------")
-                    i+=1
+                    
+                        
+                        
+                if users[i].name_classe ==  "Barbarian":
+                    for j in range(2):
+                        input_user = ""
+                        while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
+                            input_user = str(input(f"quel est votre action {users[i].name_perso} ? vous REPOSER ou ATTAQUER ? "))
+                        
+                    
+                        if input_user.lower() == "attaquer":
+                            print(f"{users[i].name_perso} attaque {users[i-1].name_perso} avec {users[i].weapon.name_weapon}")
+                            users[i-1].dammage_reduction(users[i].weapon.dammage, users[i])
+                            print("--------------------------------------")
+
+                                
+                        if input_user.lower() == "reposer":
+                            print(f"vous recupérez {users[i].recup_hp()} hp")
+                            print(f"vous avez {users[i].hp_basic()} hp")
+                            print("--------------------------------------")
+                
     
     def adventure():
         classe = [Mage, Barbarian]
@@ -200,11 +209,14 @@ class Arena:
                 print(f"vous avez {User_1.hp_basic} point de vie")
                 print(f"{ennemie[nb_ennemie].name_perso} à {ennemie[nb_ennemie].hp_basic} point de vie")
                 if classe_choisie == 0:
-                    input_user = str(input("quel est votre action ? vous reposer ou attaquer ? "))
-                    
-                    if input_user.lower() == "attaquer":
-                        input_user = str(input("vous voulez lancer un sort ou taper au corps à corps ? "))
+                    input_user = ""
+                    while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
+                        input_user = str(input(f"quel est votre action {User_1.name_perso} ? vous REPOSER ou ATTAQUER ? "))
                         
+                    if input_user.lower() == "attaquer":
+                        input_user = ""
+                        while input_user.lower() != "lancer" and input_user.lower() != "taper":
+                            input_user = str(input("vous voulez LANCER un sort ou TAPER au corps à corps ? "))
                         
                         if input_user.lower() == "lancer":
                             sort_a_lancer = int(input(f"vous voulez lancer quel sort {send_name(spell)} ? ")) 
@@ -233,7 +245,9 @@ class Arena:
                     
                 if classe_choisie ==  1:
                     for i in range(2):
-                        input_user = str(input("quel est votre action ? vous reposer ou attaquer ? "))
+                        input_user = ""
+                        while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
+                            input_user = str(input(f"quel est votre action {User_1.name_perso} ? vous REPOSER ou ATTAQUER ? "))
                         print("--------------------------------------")
                     
                         if input_user.lower() == "attaquer":
