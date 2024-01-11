@@ -91,12 +91,13 @@ class Arena:
         while True:
             users = [User_1, User_2]
             if User_1.hp_basic<=0:
-                print(f"{User_1.name_perso} est mort, {User_2.name_perso} a gagné !")
+                print(f"{User_1.name_perso} est mort, {User_2.name_perso} a gagné par conséquent, {User_1.name_perso} est un loser !")
                 break
             
             if User_2.hp_basic<=0:
-                print(f"{User_2.name_perso} est mort, {User_1.name_perso} a gagné !")
+                print(f"{User_2.name_perso} est mort, {User_1.name_perso} a gagné par conséquent, {User_2.name_perso} est un loser !")
                 break            
+<<<<<<< Updated upstream
             
 
             for i in range (2):
@@ -115,6 +116,21 @@ class Arena:
                         
                         if input_user.lower() == "lancer":
                             sort_a_lancer = int(input(f"vous voulez lancer quel sort {send_name(spell)}? ")) 
+=======
+
+            print(f"User 1 possède {User_1.hp_basic} points de vie")
+            print(f"User 2 possède {User_2.hp_basic} points de vie")
+            
+            for i in range (len(users)):
+                if classe_choisie == 0:
+                    input_user = str(input(f"Quelle est votre action {users[i]} ? Vous __reposer__ ou bien __attaquer__ ? "))
+                    
+                    if input_user.lower() == "attaquer":
+                        input_user = str(input("Voulez-vous __lancer__ un sort ou bien __taper__ au corps à corps ? "))
+                        
+                        if input_user.lower() == "lancer":
+                            sort_a_lancer = int(input(f"Quel sort voulez-vous lancer ? : {print(send_name(spell))} ? ")) 
+>>>>>>> Stashed changes
                                                 
                             if users[i].get_mana() <= 0 or users[i].get_mana()-(spell[sort_a_lancer].mana_cost)<0:
                                 print("Vous n'avez pas assez de mana pour attaquer")
@@ -123,17 +139,25 @@ class Arena:
                             else : 
                                 print(f"{users[i].name_perso} utilise {spell[sort_a_lancer].spell_name} sur {users[i-1].name_perso}, {User_1.name_perso} a {User_1.get_mana()} mana")
                                 users[i-1].magic_dammage_reduction(users[i].weapon.magic_damage, spell[sort_a_lancer], users[i])
+<<<<<<< Updated upstream
+=======
+                                print(f"Vous avez {users[i].get_mana()} points de mana")
+>>>>>>> Stashed changes
                                 print("--------------------------------------")
                                 
                         if input_user.lower() == "taper":
                             print(f"{users[i].name_perso} attaque {users[i-1].name_perso} avec {users[i].weapon.name_weapon}")
                             users[i-1].dammage_reduction(users[i].weapon.dammage, users[i])
+<<<<<<< Updated upstream
+=======
+                            print(f"Vous attaquez {users[i-1].name_perso}")
+>>>>>>> Stashed changes
                             print("--------------------------------------")
 
                             
                     if input_user.lower() == "reposer":
-                        print(f"vousrecupérez {users[i].recup_mana()} mana")
-                        print(f"vous avez {users[i].get_mana()} mana")
+                        print(f"Vous récupérez {users[i].recup_mana()} points de mana")
+                        print(f"Vous avez {users[i].get_mana()} points de mana")
                         print("--------------------------------------")
                     
                         
@@ -245,6 +269,7 @@ class Arena:
                     
                 if classe_choisie ==  1:
                     for i in range(2):
+<<<<<<< Updated upstream
                         input_user = ""
                         while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
                             input_user = str(input(f"quel est votre action {User_1.name_perso} ? vous REPOSER ou ATTAQUER ? "))
@@ -253,6 +278,52 @@ class Arena:
                         if input_user.lower() == "attaquer":
                             print(f"{User_1.name_perso} attaque {ennemie[nb_ennemie].name_perso} avec {User_1.weapon.name_weapon}")
                             ennemie[nb_ennemie].dammage_reduction(User_1.weapon.dammage, User_1)
+=======
+                        input_user = str(input("Quelle est votre action ? Vous __reposer ou bien attaquer__ ? "))
+                    
+                    if input_user.lower() == "attaquer":
+                        users[i-1].dammage_reduction(users[i].weapon.dammage, users[i])
+                        print(f"Vous attaquez {ennemi[nb_ennemi].name_perso}")
+                        print("--------------------------------------")
+
+                            
+                    if input_user.lower() == "reposer":
+                        print(f"Vous recupérez {users[i].recup_hp()} points de vie")
+                        print(f"Vous avez {users[i].hp_basic()} points de vie")
+                        print("--------------------------------------")
+    
+    def adventure(self, User_1):
+        nb_ennemi = 0
+    while True:
+        if User_1.hp_basic<=0:
+            print("Vous êtes mort, fallait être meilleur.")
+            break
+        if nb_ennemi >= len(ennemi):
+            print("Vous avez vaincu tous les ennemis ! Félicitation vous avez été meilleur !")
+            break
+        if ennemi[nb_ennemi].hp_basic<=0:
+            print(f"Vous avez vaincu un(e) {ennemi[nb_ennemi].name_perso}. Va falloir continuer !")
+            nb_ennemi+=1
+            
+
+            
+        else:
+            print("--------------------------------------")
+            print(f"Vous avez {User_1.hp_basic} points de vie")
+            print(f"{ennemi[nb_ennemi].name_perso} possède {ennemi[nb_ennemi].hp_basic} points de vie")
+            if classe_choisie == 0:
+                input_user = str(input("Quelle est votre action ? Vous __reposer__ ou bien __attaquer__ ? "))
+                
+                if input_user.lower() == "attaquer":
+                    input_user = str(input("Voulez-vous __lancer__ un sort ou bien __taper__ au corps à corps ? "))
+                    
+                    
+                    if input_user.lower() == "lancer":
+                        sort_a_lancer = int(input(f"Quel sort voulez-vous lancer ? : {send_name(spell)} ? ")) 
+                        print("--------------------------------------")
+                        if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_cost)<0:
+                            print("Vous n'avez pas assez de mana pour attaquer")
+>>>>>>> Stashed changes
                             print("--------------------------------------")
 
                                 
@@ -282,8 +353,13 @@ class Arena:
                             print("--------------------------------------")
 
                         else : 
+<<<<<<< Updated upstream
                             User_1.magic_dammage_reduction(ennemie[nb_ennemie].weapon.magic_damage, spell, ennemie[nb_ennemie])
                             print(f"{ennemie[nb_ennemie].name_perso} utilise {spell.spell_name}, il lui reste {ennemie[nb_ennemie].get_mana()} mana")
+=======
+                            print(f"{User_1.name_perso} utilise {spell[sort_a_lancer].spell_name} sur {ennemi[nb_ennemi].name_perso}, {User_1.name_perso} possède {User_1.get_mana()} points de mana restants")
+                            ennemi[nb_ennemi].magic_dammage_reduction(User_1.weapon.magic_damage, spell[sort_a_lancer], User_1)
+>>>>>>> Stashed changes
                             print("--------------------------------------")
 
                     if ennemie_attack == 4:
@@ -291,8 +367,70 @@ class Arena:
                         print(f"{ennemie[nb_ennemie].name_perso} a {ennemie[nb_ennemie].get_mana()} mana")
                         print("--------------------------------------")
 
+<<<<<<< Updated upstream
                     else:
                         print(f"{ennemie[nb_ennemie].name_perso} attaque {User_1.name_perso} avec {ennemie[nb_ennemie].weapon.name_weapon}")
                         User_1.dammage_reduction(ennemie[nb_ennemie].weapon.dammage, ennemie[nb_ennemie])
                         print("--------------------------------------")
 
+=======
+                        
+                if input_user.lower() == "reposer":
+                    print("--------------------------------------")
+                    print(f"Vous récupérez {abs(User_1.mana_basic-User_1.recup_mana())} points de mana") #modifier pour avoir le mana en négatif
+                    print(f"Vous possédez {User_1.get_mana()} points de mana")
+                    print("--------------------------------------")
+                    
+                
+            if classe_choisie ==  1:
+                for i in range(2):
+                    input_user = str(input("Quelle est votre action ? Vous __reposer__ ou bien __attaquer__ ? "))
+                    print("--------------------------------------")
+                
+                    if input_user.lower() == "attaquer":
+                        print(f"{User_1.name_perso} attaque {ennemi[nb_ennemi].name_perso} avec {User_1.weapon.name_weapon}")
+                        ennemi[nb_ennemi].dammage_reduction(User_1.weapon.dammage, User_1)
+                        print("--------------------------------------")
+
+                            
+                    if input_user.lower() == "reposer":
+                        print(f"Vous recupérez {abs(User_1.recup_hp()-User_1.hp_basic())} points de vie")
+                        print(f"Vous possédez {User_1.hp_basic()} points de vie ")
+                        print("--------------------------------------")
+
+            if ennemi[nb_ennemi].return_type() == "physique":
+                ennemi_attack = randint(0,6)
+                if ennemi_attack <=3:
+                    print(f"{ennemi[nb_ennemi].name_perso} attaque {User_1.name_perso} avec {ennemi[nb_ennemi].weapon.name_weapon}")
+                    User_1.dammage_reduction(ennemi[nb_ennemi].weapon.dammage, ennemi[nb_ennemi])
+                    
+                if ennemi_attack >= 4:
+                    print(f"{ennemi[nb_ennemi].name_perso} recupère {abs(ennemi[nb_ennemi].hp_basic -ennemi[nb_ennemi].recup_hp())} points de vie")
+                    print(f"{ennemi[nb_ennemi].name_perso} possède {ennemi[nb_ennemi].hp_basic} points de vie")
+                    print("--------------------------------------")
+
+            if ennemi[nb_ennemi].return_type() == "magique":
+                ennemi_attack <= randint(0,7)
+                if ennemi_attack <=3:
+                    sort_lance = spell[randint(0, len(spell))]
+                    if ennemi[nb_ennemi].get_mana() <= 0 or ennemi[nb_ennemi].get_mana()-(sort_lance.mana_cost)<0:
+                        print(f"{ennemi[nb_ennemi].name_perso} récupère {abs(ennemi[ennemi[nb_ennemi].get_mana()-nb_ennemi].recup_mana())} points de mana")
+                        print(f"{ennemi[nb_ennemi].name_perso} a {ennemi[nb_ennemi].get_mana()} mana")
+                        print("--------------------------------------")
+
+                    else : 
+                        User_1.magic_dammage_reduction(ennemi[nb_ennemi].weapon.magic_damage, spell, ennemi[nb_ennemi])
+                        print(f"{ennemi[nb_ennemi].name_perso} utilise {spell.spell_name}, il lui reste {ennemi[nb_ennemi].get_mana()} points de mana")
+                        print("--------------------------------------")
+
+                if ennemi_attack == 4:
+                    print(f"{ennemi[nb_ennemi].name_perso} récupère {abs(ennemi[ennemi[nb_ennemi].get_mana()-nb_ennemi].recup_mana())} points de mana")
+                    print(f"{ennemi[nb_ennemi].name_perso} possède {ennemi[nb_ennemi].get_mana()} points de mana")
+                    print("--------------------------------------")
+
+                else:
+                    print(f"{ennemi[nb_ennemi].name_perso} attaque {User_1.name_perso} avec {ennemi[nb_ennemi].weapon.name_weapon}")
+                    User_1.dammage_reduction(ennemi[nb_ennemi].weapon.dammage, ennemi[nb_ennemi])
+                    print("--------------------------------------")
+
+>>>>>>> Stashed changes
