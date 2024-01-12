@@ -53,7 +53,7 @@ class Arena:
     @staticmethod 
     def fight():
         classe = [Mage, Barbarian]
-        armor = [pas_armure, armure_legere, armure_moyenne, armure_lourde, armure_magique, armure_full_parade, armure_archmage]
+        armor = [pas_armure, armure_legere, armure_moyenne, armure_lourde, armure_magique, armure_full_parade, armure_archimage]
         weapon = [la_main, massue, lance, hache, baton, baguette, sceptre]
         spell = [etincelle, boule_de_feu, vague_tonante]
         ennemie_physique= [gobelin, hobogoblin, orc, ogre]
