@@ -33,7 +33,7 @@ class Character:
             self.hp_basic -= ((1-(armor/500)) * (dammage *1.5))
             
         if crit_esquive >=95:
-            print(f"{self.name_perso} esquive l'attaque énemie")
+            print(f"{self.name_perso} esquive l'attaque énnemie")
             return self.hp_basic 
         
         else:
@@ -58,7 +58,7 @@ class Character:
             
             
         if crit_esquive >=95:
-            print(f"{self.name_perso} esquive l'attaque énemie")
+            print(f"{self.name_perso} esquive l'attaque énnemie")
             return self.hp_basic 
         
         else:

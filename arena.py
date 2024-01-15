@@ -277,7 +277,7 @@ class Arena:
                     if ennemie_attack <=3:
                         sort_lance = spell[randint(0, len(spell))]
                         if ennemie[nb_ennemie].get_mana() <= 0 or ennemie[nb_ennemie].get_mana()-(sort_lance.mana_cost)<0:
-                            print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[ennemie[nb_ennemie].get_mana()-nb_ennemie].recup_mana())} points de mana")
+                            print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[nb_ennemie].get_mana()-nb_ennemie.recup_mana())} points de mana")
                             print(f"{ennemie[nb_ennemie].name_perso} possède {ennemie[nb_ennemie].get_mana()} points de mana restants")
                             print("--------------------------------------")
 
@@ -287,7 +287,7 @@ class Arena:
                             print("--------------------------------------")
 
                     if ennemie_attack == 4:
-                        print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[ennemie[nb_ennemie].get_mana()-nb_ennemie].recup_mana())} points de mana")
+                        print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[nb_ennemie].get_mana()-nb_ennemie.recup_mana())} points de mana")
                         print(f"{ennemie[nb_ennemie].name_perso} possède {ennemie[nb_ennemie].get_mana()} points de mana restants")
                         print("--------------------------------------")
 
