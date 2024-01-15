@@ -257,8 +257,8 @@ class Arena:
 
                                 
                         if input_user.lower() == "reposer":
-                            print(f"Vous recupérez {abs(User_1.recup_hp()-User_1.hp_basic())} points de vie")
-                            print(f"Vous avez {User_1.hp_basic()} points de vie")
+                            print(f"Vous recupérez {abs(User_1.hp_basic - User_1.recup_hp())} points de vie")
+                            print(f"Vous avez {User_1.hp_basic} points de vie")
                             print("--------------------------------------")
 
                 if ennemie[nb_ennemie].return_type() == "physique":
