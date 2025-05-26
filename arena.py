@@ -9,13 +9,13 @@ from gears.spell import Spell
 
 #armes physique
 la_main = Weapons(" À la main", 10, 0, 0, 0)
-massue = Weapons(" Une massue", 20, 0, 0, 40)#BONK
+massue = Weapons(" Une massue", 20, 0, 0, 40)
 lance = Weapons(" Lance", 50, 0, 0, 0, 20)
-hache = Weapons(" Hache", 30, 0, 0, 20, 15)#ce n'est pas moi madame c'est la hache
+hache = Weapons(" Hache", 30, 0, 0, 20, 15)
 
 #armes magiques
 baton = Weapons(" Un bâton", 20, 1, 0, 10)
-baguette = Weapons(" Baguette", 0, 3, 50, 0)#la france
+baguette = Weapons(" Baguette", 0, 3, 50, 0)
 sceptre = Weapons(" Sceptre", 20, 2, 100, 0)
 
 
@@ -23,11 +23,11 @@ sceptre = Weapons(" Sceptre", 20, 2, 100, 0)
 pas_armure = Armor(" Aucune armure", 0, 0, 0)
 armure_legere = Armor(" Armure légère", 30, 0, 50)
 armure_moyenne = Armor(" Armure moyenne", 75, 10, 20)
-armure_lourde = Armor(" Armure lourde", 130, 15, 0)#le PEKKA
+armure_lourde = Armor(" Armure lourde", 130, 15, 0)
 
 #armures magiques
-armure_magique = Armor(" Armure magique", 20, 0, 100)#c'est de la MAAAAGIIEEE
-armure_full_parade = Armor(" Armure de renvoie de dégâts", 0, 75, 0)#apres la pique je touche
+armure_magique = Armor(" Armure magique", 20, 0, 100)
+armure_full_parade = Armor(" Armure de renvoie de dégâts", 0, 75, 0)
 armure_archimage = Armor(" Armure d'archimage", 0, 0, 150)
     
        
