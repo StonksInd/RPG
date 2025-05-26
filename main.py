@@ -1,10 +1,10 @@
 from arena import Arena
 
-input_us = ""
-while input_us.lower() !="fight" and input_us.lower() != "adventure":
-    input_us = input("À quel mode voulez-vous jouer ? : FIGHT (1vs1) / ADVENTURE (mode histoire) :")
-if input_us.lower() == "fight":
+input_us = -1
+while input_us != 0 and input_us != 1:
+    input_us = int(input("À quel mode voulez-vous jouer ? : 0 Combat (1vs1) / 1 mode histoire : "))
+if input_us == 0:
     Arena.fight()
        
-if input_us.lower() == "adventure":
+if input_us == 1:
     Arena.adventure()

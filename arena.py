@@ -58,7 +58,7 @@ class Arena:
         spell = [etincelle, boule_de_feu, vague_tonante]
         ennemie_physique= [gobelin, hobogoblin, orc, ogre]
         ennemie_magique = [salamandre_elementaire, sorciere, golem_magique, elementaire]
-        classe_choisie, armor_choisie, weapon_choisie = len(classe), len(armor), len(weapon)
+        classe_choisie, armor_choisie, weapon_choisie = -1, -1, -1
 
         def send_name(tab):
             str_return = ""
@@ -75,7 +75,7 @@ class Arena:
             weapon_choisie = int(input(f"Quelle arme voulez-vous ? : {send_name(weapon)} "))
         
         User_1 = classe[classe_choisie](name_user, armor[armor_choisie], weapon[weapon_choisie])
-        classe_choisie, armor_choisie, weapon_choisie = len(classe), len(armor), len(weapon)
+        classe_choisie, armor_choisie, weapon_choisie = -1, -1, -1
         
         name_user = str(input("Quel est votre nom ? Utilisateur 2 : "))
         while classe_choisie < 0 or classe_choisie > len(classe)-1:
@@ -104,16 +104,16 @@ class Arena:
                 print(f"{User_2.name_perso} a {User_2.hp_basic} points de vie")
                 print("--------------------------------------")
                 if users[i].name_classe == "mage":
-                    input_user = ""
-                    while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
-                        input_user = str(input(f"Quelle est votre action {users[i].name_perso} ? Vous REPOSER ou bien ATTAQUER ? "))
+                    input_user = -1
+                    while input_user != 0 and input_user != 1:
+                        input_user = int(input(f"Quelle est votre action {users[i].name_perso} ? Vous REPOSER[0] ou bien ATTAQUER[1] ? "))
                     
-                    if input_user.lower() == "attaquer":
-                        input_user = ""
-                        while input_user.lower() != "lancer" and input_user.lower() != "taper":
-                            input_user = str(input("Vous voulez LANCER un sort ou bien TAPER au corps à corps ? "))
+                    if input_user == 1:
+                        input_user = -1
+                        while input_user != 0 and input_user != 1:
+                            input_user = int(input("Vous voulez LANCER[0] un sort ou bien TAPER[1] au corps à corps ? "))
                         
-                        if input_user.lower() == "lancer":
+                        if input_user == 0:
                             sort_a_lancer = int(input(f"Quel sort voulez-vous lancer ? : {send_name(spell)} ")) 
                                                 
                             if users[i].get_mana() <= 0 or users[i].get_mana()-(spell[sort_a_lancer].mana_cost)<0:
@@ -125,13 +125,13 @@ class Arena:
                                 users[i-1].magic_dammage_reduction(users[i].weapon.magic_damage, spell[sort_a_lancer], users[i])
                                 print("--------------------------------------")
                                 
-                        if input_user.lower() == "taper":
+                        if input_user == 1:
                             print(f"{users[i].name_perso} attaque {users[i-1].name_perso} avec {users[i].weapon.name_weapon}")
                             users[i-1].dammage_reduction(users[i].weapon.dammage, users[i])
                             print("--------------------------------------")
 
                             
-                    if input_user.lower() == "reposer":
+                    if input_user == 0:
                         print(f"Vous récupérez {users[i].recup_mana()} points de mana")
                         print(f"Vous avez {users[i].get_mana()} points de mana")
                         print("--------------------------------------")
@@ -140,20 +140,20 @@ class Arena:
                         
                 if users[i].name_classe ==  "Barbarian":
                     for j in range(2):
-                        input_user = ""
-                        while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
-                            input_user = str(input(f"Quelle est votre action {users[i].name_perso} ? Vous REPOSER ou bien ATTAQUER ? "))
+                        input_user = -1
+                        while input_user != 0 and input_user != 1:
+                            input_user = int(input(f"Quelle est votre action {users[i].name_perso} ? Vous REPOSER[0] ou bien ATTAQUER[1] ? "))
                         
                     
-                        if input_user.lower() == "attaquer":
+                        if input_user == 1:
                             print(f"{users[i].name_perso} attaque {users[i-1].name_perso} avec {users[i].weapon.name_weapon}")
                             users[i-1].dammage_reduction(users[i].weapon.dammage, users[i])
                             print("--------------------------------------")
 
                                 
-                        if input_user.lower() == "reposer":
+                        if input_user == 0:
                             print(f"Vous recupérez {users[i].recup_hp()} points de vie")
-                            print(f"vous possédez {users[i].hp_basic()} points de vie")
+                            print(f"vous possédez {users[i].hp_basic} points de vie")
                             print("--------------------------------------")
                 
     
@@ -209,16 +209,16 @@ class Arena:
                 print(f"Vous avez {User_1.hp_basic} points de vie")
                 print(f"{ennemie[nb_ennemie].name_perso} a {ennemie[nb_ennemie].hp_basic} points de vie")
                 if classe_choisie == 0:
-                    input_user = ""
-                    while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
-                        input_user = str(input(f"Quelle est votre action {User_1.name_perso} ? Vous REPOSER ou bien ATTAQUER ? "))
+                    input_user = -1
+                    while input_user != 0 and input_user != 1:
+                        input_user = int(input(f"Quelle est votre action {User_1.name_perso} ? Vous REPOSER[0] ou bien ATTAQUER[1] ? "))
                         
-                    if input_user.lower() == "attaquer":
-                        input_user = ""
-                        while input_user.lower() != "lancer" and input_user.lower() != "taper":
-                            input_user = str(input("Voulez-vous LANCER un sort ou bien TAPER au corps à corps ? "))
+                    if input_user == 1:
+                        input_user = -1
+                        while input_user != 0 and input_user != 1:
+                            input_user = int(input("Voulez-vous LANCER[0] un sort ou bien TAPER[1] au corps à corps ? "))
                         
-                        if input_user.lower() == "lancer":
+                        if input_user == 0:
                             sort_a_lancer = int(input(f"Quel sort voulez-vous lancer ? : {send_name(spell)} ? ")) 
                             print("--------------------------------------")
                             if User_1.get_mana() <= 0 or User_1.get_mana()-(spell[sort_a_lancer].mana_cost)<0:
@@ -230,13 +230,13 @@ class Arena:
                                 ennemie[nb_ennemie].magic_dammage_reduction(User_1.weapon.magic_damage, spell[sort_a_lancer], User_1)
                                 print("--------------------------------------")
                                 
-                        if input_user.lower() == "taper":
+                        if input_user == 1:
                             print(f"{User_1.name_perso} attaque {ennemie[nb_ennemie].name_perso} avec {User_1.weapon.name_weapon}")
                             ennemie[nb_ennemie].dammage_reduction(User_1.weapon.dammage, User_1)
                             print("--------------------------------------")
 
                             
-                    if input_user.lower() == "reposer":
+                    if input_user == 0:
                         print("--------------------------------------")
                         print(f"Vous recupérez {abs(User_1.mana_basic-User_1.recup_mana())} points de mana") #modifier pour avoir le mana en négatif
                         print(f"Vous possédez {User_1.get_mana()} points de mana")
@@ -245,18 +245,18 @@ class Arena:
                     
                 if classe_choisie ==  1:
                     for i in range(2):
-                        input_user = ""
-                        while input_user.lower() != "reposer" and input_user.lower() != "attaquer":
-                            input_user = str(input(f"Quelle est votre action {User_1.name_perso} ? Vous REPOSER ou bien ATTAQUER ? "))
+                        input_user = -1
+                        while input_user != 0 and input_user != 1:
+                            input_user = int(input(f"Quelle est votre action {User_1.name_perso} ? Vous REPOSER[0] ou bien ATTAQUER[1] ? "))
                         print("--------------------------------------")
                     
-                        if input_user.lower() == "attaquer":
+                        if input_user == 1:
                             print(f"{User_1.name_perso} attaque {ennemie[nb_ennemie].name_perso} avec {User_1.weapon.name_weapon}")
                             ennemie[nb_ennemie].dammage_reduction(User_1.weapon.dammage, User_1)
                             print("--------------------------------------")
 
                                 
-                        if input_user.lower() == "reposer":
+                        if input_user == 0:
                             print(f"Vous recupérez {abs(User_1.hp_basic -User_1.recup_hp())} points de vie")
                             print(f"Vous avez {User_1.hp_basic} points de vie")
                             print("--------------------------------------")
@@ -275,9 +275,9 @@ class Arena:
                 if ennemie[nb_ennemie].return_type() == "magique":
                     ennemie_attack <= randint(0,7)
                     if ennemie_attack <=3:
-                        sort_lance = spell[randint(0, len(spell))]
+                        sort_lance = spell[randint(0, len(spell)-1)]
                         if ennemie[nb_ennemie].get_mana() <= 0 or ennemie[nb_ennemie].get_mana()-(sort_lance.mana_cost)<0:
-                            print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[nb_ennemie].get_mana()-nb_ennemie.recup_mana())} points de mana")
+                            print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[nb_ennemie].get_mana()-ennemie[nb_ennemie].recup_mana())} points de mana")
                             print(f"{ennemie[nb_ennemie].name_perso} possède {ennemie[nb_ennemie].get_mana()} points de mana restants")
                             print("--------------------------------------")
 
@@ -287,7 +287,7 @@ class Arena:
                             print("--------------------------------------")
 
                     if ennemie_attack == 4:
-                        print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[nb_ennemie].get_mana()-nb_ennemie.recup_mana())} points de mana")
+                        print(f"{ennemie[nb_ennemie].name_perso} se repose et recupère {abs(ennemie[nb_ennemie].get_mana()-ennemie[nb_ennemie].recup_mana())} points de mana")
                         print(f"{ennemie[nb_ennemie].name_perso} possède {ennemie[nb_ennemie].get_mana()} points de mana restants")
                         print("--------------------------------------")
 
