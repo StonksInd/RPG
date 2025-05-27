@@ -2,7 +2,7 @@
 
 Un jeu de rôle en ligne de commande développé en Python, proposant des combats tactiques au tour par tour avec un système de classes, d'équipements et de sorts.
 
-## 🎮 Description du Projet
+##  Description du Projet
 
 Ce projet est un RPG textuel qui propose deux modes de jeu :
 - **Mode Combat (1vs1)** : Affrontement entre deux joueurs
@@ -10,14 +10,14 @@ Ce projet est un RPG textuel qui propose deux modes de jeu :
 
 Le jeu intègre un système de combat stratégique avec différentes classes de personnages, équipements variés et sorts magiques.
 
-## 🛠️ Technologies Utilisées
+##  Technologies Utilisées
 
 - **Python 3.x** - Langage principal
 - **Modules Python standard** :
   - `random` - Pour la génération de nombres aléatoires (critiques, esquives, récupération)
   - Programmation orientée objet (POO)
 
-## 📁 Structure du Projet
+##  Structure du Projet
 
 ```
 rpg-game/
@@ -35,22 +35,22 @@ rpg-game/
     └── ennemi.py          # Classe Enemy
 ```
 
-## 🎯 Classes de Personnages
+##  Classes de Personnages
 
-### 🗡️ Barbarian
+###  Barbarian
 - **Points de vie** : 200
 - **Spécialité** : Combat rapproché, attaques multiples
 - **Capacité spéciale** : Peut attaquer deux fois par tour
 - **Récupération** : Régénère 20-60 PV en se reposant
 
-### 🔮 Mage
+###  Mage
 - **Points de vie** : 100
 - **Mana** : 300
 - **Spécialité** : Magie offensive et sorts puissants
 - **Capacité spéciale** : Lance des sorts magiques
 - **Récupération** : Régénère 10-50 points de mana en se reposant
 
-## ⚔️ Système d'Équipement
+##  Système d'Équipement
 
 ### Armes Physiques
 - **À la main** : 10 dégâts
@@ -74,13 +74,13 @@ rpg-game/
 - **Armure de renvoi** : 75 de thorns
 - **Armure d'archimage** : 150 de résistance magique
 
-## 🔥 Sorts Disponibles
+##  Sorts Disponibles
 
 - **Étincelle** : 10 de dégâts, coût 45 mana
 - **Boule de feu** : 20 de dégâts, coût 60 mana  
 - **Vague tonante** : 50 de dégâts, coût 100 mana
 
-## 👹 Ennemis
+##  Ennemis
 
 ### Ennemis Physiques
 1. **Gobelin** (Difficulté 1) : 50 PV, armure légère, massue
@@ -94,7 +94,7 @@ rpg-game/
 3. **Golem magique** (Difficulté 3) : 450 PV, armure lourde
 4. **Esprit élémentaire** (Difficulté 4) : 200 PV, armure d'archimage, sceptre
 
-## 🎲 Mécaniques de Combat
+##  Mécaniques de Combat
 
 ### Système de Dégâts
 - **Formule d'armure** : `dégâts_finaux = (1 - armure/500) × dégâts_base`
@@ -107,7 +107,7 @@ rpg-game/
 - **Lancer un sort** (Mage uniquement) : Attaque magique coûtant de la mana
 - **Se reposer** : Récupérer des PV (Barbarian) ou de la mana (Mage)
 
-## 🚀 Installation et Lancement
+##  Installation et Lancement
 
 ### Prérequis
 - Python 3.x installé sur votre système
@@ -130,7 +130,7 @@ python main.py
    - Choisissez votre arme
 3. Combattez et utilisez la stratégie pour l'emporter !
 
-## 🎯 Modes de Jeu
+##  Modes de Jeu
 
 ### Mode Combat (1vs1)
 - Deux joueurs créent leur personnage
@@ -142,7 +142,7 @@ python main.py
 - Choisissez votre niveau de difficulté (1 à 4)
 - Battez tous les ennemis pour gagner la partie
 
-## 🔧 Fonctionnalités Techniques
+##  Fonctionnalités Techniques
 
 - **Héritage POO** : Système de classes avec Character comme classe de base
 - **Polymorphisme** : Différents comportements selon les classes
@@ -150,7 +150,7 @@ python main.py
 - **Gestion d'état** : Suivi des PV, mana et équipements
 - **Système aléatoire** : Critiques, esquives et récupération dynamiques
 
-## 🤝 Contribution
+##  Contribution
 
 Ce projet est ouvert aux améliorations ! Vous pouvez :
 - Ajouter de nouvelles classes de personnages
@@ -159,7 +159,7 @@ Ce projet est ouvert aux améliorations ! Vous pouvez :
 - Améliorer l'interface utilisateur
 - Ajouter un système de sauvegarde
 
-## 📝 Notes de Développement
+##  Notes de Développement
 
 Le jeu utilise une approche modulaire avec séparation claire entre :
 - La logique de jeu (arena.py)
